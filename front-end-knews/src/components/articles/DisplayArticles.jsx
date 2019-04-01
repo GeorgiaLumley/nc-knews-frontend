@@ -1,12 +1,11 @@
 import React from "react";
 
 const DisplayArticles = ({ articles }) => {
-  console.log(articles);
   return (
     <ol>
       {articles.map(article => {
         return (
-          <li>
+          <li key={article.article_id}>
             <p>{article.title}</p>
             <p>{article.author}</p>
             <p>{article.topic}</p>
