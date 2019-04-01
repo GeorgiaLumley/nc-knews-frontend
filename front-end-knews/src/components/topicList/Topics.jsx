@@ -6,8 +6,8 @@ const Topics = ({ topics }) => {
       {topics.map(topic => {
         return (
           <li key={topic.slug}>
-            <h3>{topic.slug}</h3>
-            <h4>{topic.description}</h4>
+            <p>{topic.slug}</p>
+            <p>{topic.description}</p>
           </li>
         );
       })}

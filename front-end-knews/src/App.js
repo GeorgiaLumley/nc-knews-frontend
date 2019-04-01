@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Title from "./components/title";
 import TopicList from "./components/topicList/TopicList";
+import Articles from "./components/articles/Articles";
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
       <div className='App'>
         <Title />
         <TopicList />
+        <Articles />
       </div>
     );
   }
