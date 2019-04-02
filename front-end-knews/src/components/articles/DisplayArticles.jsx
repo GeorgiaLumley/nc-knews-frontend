@@ -1,12 +1,15 @@
 import React from "react";
+import { Link } from "@reach/router";
 
 const DisplayArticles = ({ articles }) => {
   return (
-    <ol>
+    <ul>
       {articles.map(article => {
         return (
           <li key={article.article_id}>
-            <p>{article.title}</p>
+            <Link to={`articles/${article.article_id}`}>
+              <p>{article.title}</p>
+            </Link>
             <p>{article.author}</p>
             <p>{article.topic}</p>
             <p>{article.votes}</p>
@@ -14,7 +17,7 @@ const DisplayArticles = ({ articles }) => {
           </li>
         );
       })}
-    </ol>
+    </ul>
   );
 };
 
