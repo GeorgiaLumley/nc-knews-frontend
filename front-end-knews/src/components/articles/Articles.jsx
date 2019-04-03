@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import DisplayArticles from "../articles/DisplayArticles";
-import TopicList from "../topicList/TopicList";
+import { fetchAllArticles, fetchArticlesWithTopic } from "../../axios";
 import FilterForm from "./sortingArticles/FilterForm";
 
 class Articles extends Component {
@@ -12,7 +12,6 @@ class Articles extends Component {
   render() {
     return (
       <div>
-        <TopicList />
         <DisplayArticles articles={this.state.articles} />
         <FilterForm
           updateState={this.changeStateByFilterOptions}
@@ -22,9 +21,14 @@ class Articles extends Component {
     );
   }
   componentDidMount() {
-    axios
-      .get("https://nc-knews-lumley.herokuapp.com/api/articles")
-      .then(res => this.setState({ articles: res.data.articles }));
+    if (!this.props.topic_id) {
+      fetchAllArticles().then(res => this.setState({ articles: res }));
+    } else {
+      fetchArticlesWithTopic(this.props.topic_id).then(res => {
+        console.log(res);
+        this.setState({ articles: res });
+      });
+    }
   }
 
   changeStateByFilterOptions = event => {

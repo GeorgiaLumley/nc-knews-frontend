@@ -5,13 +5,14 @@ import {
   updateArticleVote
 } from "../../axios";
 import { ArticleComments } from "./ArticleComments";
-import { ArticleVotes } from "./ArticleVotes";
+
 import ArticleTitleGrid from "./articleTitleGrid";
 
 class Article extends Component {
   state = {
     article: {},
-    comments: []
+    comments: [],
+    voteChange: 0
   };
   render() {
     return (
@@ -22,10 +23,24 @@ class Article extends Component {
           created={this.state.article.created_at}
         />
         <p id='body'>{this.state.article.body}</p>
-        <ArticleVotes
-          votes={this.state.article.votes}
-          updateVote={this.updateVote}
-        />
+        <div>
+          <p>{this.state.article.votes + this.state.voteChange}</p>
+          <span role='img'>
+            <button
+              disabled={this.state.voteChange === 1}
+              onClick={() => this.updateVote(1)}
+            >
+              Up
+            </button>
+
+            <button
+              disabled={this.state.voteChange === -1}
+              onClick={() => this.updateVote(-1)}
+            >
+              Down
+            </button>
+          </span>
+        </div>
 
         <ArticleComments comments={this.state.comments} />
       </div>
@@ -41,21 +56,11 @@ class Article extends Component {
     });
   }
 
-  updatedVotes = ({ data }) => {
-    this.setState({ article: data });
-  };
-
-  updateVote = event => {
-    event.preventDefault();
-    const value = event.target.value;
-    let vote = null;
-    if (value === "up") {
-      vote = { incVotes: 1 };
-    } else {
-      vote = { incVotes: -1 };
-    }
-    updateArticleVote(vote, this.props.article_id).then(article => {
-      this.setState({ article });
+  updateVote = value => {
+    console.log("hihihi");
+    updateArticleVote(value, this.props.article_id);
+    this.setState(prevState => {
+      return { voteChange: prevState.voteChange + value };
     });
   };
 }
