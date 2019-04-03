@@ -43,3 +43,10 @@ export const updateArticleVote = async (vote, article_id) => {
 
   return data.updateVotes;
 };
+
+export const fetchTopics = async blank => {
+  const { data } = await axios
+    .get("https://nc-knews-lumley.herokuapp.com/api/topics")
+    .catch(err => console.log(err));
+  return data.topics;
+};

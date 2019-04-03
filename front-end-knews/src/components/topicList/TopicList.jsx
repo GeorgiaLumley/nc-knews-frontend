@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import axios from "axios";
+
 import Topics from "./Topics";
+import { fetchTopics } from "../../axios";
 
 class TopicList extends Component {
   state = {
@@ -14,9 +15,7 @@ class TopicList extends Component {
     );
   }
   componentDidMount() {
-    axios
-      .get("https://nc-knews-lumley.herokuapp.com/api/topics")
-      .then(res => this.setState({ topics: res.data.topics }));
+    fetchTopics().then(topics => this.setState({ topics }));
   }
 }
 

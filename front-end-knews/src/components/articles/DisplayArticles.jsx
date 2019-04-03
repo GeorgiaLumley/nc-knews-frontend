@@ -7,7 +7,7 @@ const DisplayArticles = ({ articles }) => {
       {articles.map(article => {
         return (
           <li key={article.article_id}>
-            <Link to={`articles/${article.article_id}`}>
+            <Link to={`/articles/${article.article_id}`}>
               <p>{article.title}</p>
             </Link>
             <p>{article.author}</p>

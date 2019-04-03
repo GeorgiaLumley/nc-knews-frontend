@@ -3,7 +3,8 @@ import axios from "axios";
 import DisplayArticles from "../articles/DisplayArticles";
 import { fetchAllArticles, fetchArticlesWithTopic } from "../../axios";
 import FilterForm from "./sortingArticles/FilterForm";
-
+import CreateArticleButton from "../CreateArticleButton";
+import TopicLink from "../topicList/topicLink";
 class Articles extends Component {
   state = {
     articles: [],
@@ -12,6 +13,8 @@ class Articles extends Component {
   render() {
     return (
       <div>
+        <CreateArticleButton />
+        <TopicLink />
         <DisplayArticles articles={this.state.articles} />
         <FilterForm
           updateState={this.changeStateByFilterOptions}
