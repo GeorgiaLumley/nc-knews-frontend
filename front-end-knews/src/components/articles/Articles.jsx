@@ -1,7 +1,11 @@
 import React, { Component } from "react";
-import axios from "axios";
 import DisplayArticles from "../articles/DisplayArticles";
-import { fetchAllArticles, fetchArticlesWithTopic } from "../../axios";
+import {
+  fetchAllArticles,
+  fetchArticlesWithTopic,
+  fetchFilteredArticle,
+  fetchFilteredArticleWithTopic
+} from "../../axios";
 import FilterForm from "./sortingArticles/FilterForm";
 import CreateArticleButton from "../CreateArticleButton";
 import TopicLink from "../topicList/topicLink";
@@ -11,7 +15,6 @@ class Articles extends Component {
     filter: { order: "desc", sortBy: "created_at" }
   };
   render() {
-    console.log(this.props.user);
     return (
       <div>
         <CreateArticleButton />
@@ -55,16 +58,19 @@ class Articles extends Component {
   };
   filterArticles = event => {
     event.preventDefault();
+    const topic = this.props.topic_id;
+    console.log(topic);
     const order = this.state.filter.order;
     const sortBy = this.state.filter.sortBy;
-    axios
-      .get(
-        `https://nc-knews-lumley.herokuapp.com/api/articles?order=${order}&&sortBy=${sortBy}`
-      )
-      .then(({ data }) => {
-        this.setState({ articles: data.articles });
-      });
+    this.props.topic_id
+      ? fetchFilteredArticleWithTopic(order, sortBy, topic).then(data => {
+          console.log("topic");
+          this.setState({ article: data.articles });
+        })
+      : fetchFilteredArticle(order, sortBy).then(data => {
+          console.log("normal");
+          this.setState({ articles: data.articles });
+        });
   };
 }
-
 export default Articles;

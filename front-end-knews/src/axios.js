@@ -60,3 +60,39 @@ export const postArticle = async newArticle => {
     });
   return data.article[0];
 };
+
+export const addNewComment = async (article_id, comment) => {
+  console.log(comment);
+  const { data } = await axios
+    .post(
+      `https://nc-knews-lumley.herokuapp.com/api/articles/${article_id}/comments`,
+      comment
+    )
+    .catch(err => {
+      console.log(err);
+    });
+
+  return data.comment[0];
+};
+
+export const fetchFilteredArticle = async (order, sortBy) => {
+  const { data } = await axios
+    .get(
+      `https://nc-knews-lumley.herokuapp.com/api/articles?order=${order}&&sortBy=${sortBy}`
+    )
+    .catch(err => {
+      console.log(err);
+    });
+  return data;
+};
+
+export const fetchFilteredArticleWithTopic = async (order, sortBy, topic) => {
+  const { data } = await axios
+    .get(
+      `https://nc-knews-lumley.herokuapp.com/api/articles?order=${order}&&sortBy=${sortBy}&&topic=${topic}`
+    )
+    .catch(err => {
+      console.log(err);
+    });
+  return data;
+};

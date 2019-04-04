@@ -58,5 +58,9 @@
   border: 1px red solid;
   display: grid;
   grid-template-columns: subgrid;
-  /* grid-auto-rows: auto; */
+  grid-template-rows: repeat(2, 90px);
+
+  grid-template-areas:
+    "votes commentAuthor"
+    "votes commentBody";
 }

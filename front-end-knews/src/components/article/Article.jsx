@@ -1,17 +1,11 @@
 import React, { Component } from "react";
-import {
-  fetchArticleById,
-  fetchCommentsByArticleId,
-  updateArticleVote
-} from "../../axios";
-import { ArticleComments } from "./ArticleComments";
-
+import { fetchArticleById, updateArticleVote } from "../../axios";
+import ArticleComments from "./ArticleComments";
 import ArticleTitleGrid from "./articleTitleGrid";
 
 class Article extends Component {
   state = {
     article: {},
-    comments: [],
     voteChange: 0
   };
   render() {
@@ -41,8 +35,10 @@ class Article extends Component {
             </button>
           </span>
         </div>
-
-        <ArticleComments comments={this.state.comments} />
+        <ArticleComments
+          article_id={this.props.article_id}
+          user={this.props.user}
+        />
       </div>
     );
   }
@@ -50,14 +46,9 @@ class Article extends Component {
     fetchArticleById(this.props.article_id).then(article => {
       this.setState({ article });
     });
-
-    fetchCommentsByArticleId(this.props.article_id).then(comments => {
-      this.setState({ comments });
-    });
   }
 
   updateVote = value => {
-    console.log("hihihi");
     updateArticleVote(value, this.props.article_id);
     this.setState(prevState => {
       return { voteChange: prevState.voteChange + value };
