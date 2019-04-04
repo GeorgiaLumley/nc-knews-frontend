@@ -80,7 +80,6 @@ class CreateArticle extends Component {
     const newArticle = this.state.newArticle;
 
     postArticle(newArticle).then(article => {
-      console.log(article);
       navigate(`/articles/${article.article_id}`);
     });
   };

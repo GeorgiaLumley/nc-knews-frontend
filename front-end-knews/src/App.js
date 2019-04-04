@@ -5,7 +5,6 @@ import Title from "./components/title";
 import Articles from "./components/articles/Articles";
 import Article from "./components/article/Article";
 import TopicList from "./components/topicList/TopicList";
-
 import CreateArticle from "./components/CreateArticle/CreateArticle";
 
 class App extends Component {
@@ -35,6 +34,7 @@ class App extends Component {
             path='/articles/topic/:topic_id'
             user={this.state.username}
           />
+          <Articles path='/articles/:author' user={this.state.username} />
           <Article path='/articles/:article_id' user={this.state.username} />
           <CreateArticle
             path='/article/createArticle'

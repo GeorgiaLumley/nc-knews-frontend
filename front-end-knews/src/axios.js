@@ -96,3 +96,13 @@ export const fetchFilteredArticleWithTopic = async (order, sortBy, topic) => {
     });
   return data;
 };
+
+export const fetchArticlesByAuthor = async author => {
+  const { data } = await axios
+    .get(`https://nc-knews-lumley.herokuapp.com/api/articles?author=${author}`)
+    .catch(err => {
+      console.log(err);
+    });
+
+  return data.filtered;
+};
