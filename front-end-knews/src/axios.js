@@ -50,3 +50,12 @@ export const fetchTopics = async blank => {
     .catch(err => console.log(err));
   return data.topics;
 };
+
+export const postArticle = async newArticle => {
+  const res = await axios
+    .post("https://nc-knews-lumley.herokuapp.com/api/articles", newArticle)
+    .then(res => console.log(res.data))
+    .catch(err => {
+      console.log(err);
+    });
+};

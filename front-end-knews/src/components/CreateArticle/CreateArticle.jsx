@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import { fetchTopics } from "../../axios";
+import { fetchTopics, postArticle } from "../../axios";
 
 class CreateArticle extends Component {
   state = {
     availableTopics: [],
     newArticle: {
       title: "",
+      body: "",
+      votes: 0,
       topic: "",
-      body: ""
+      author: ""
     },
     readyToSubmit: false
   };
@@ -45,7 +47,7 @@ class CreateArticle extends Component {
         {this.state.newArticle.title &&
         this.state.newArticle.body &&
         this.state.newArticle.topic ? (
-          <button>submit</button>
+          <button onClick={this.postNewArticle}>submit</button>
         ) : (
           <p>Fill in all Fields</p>
         )}
@@ -66,6 +68,18 @@ class CreateArticle extends Component {
         newArticle: { ...prevState.newArticle, [inputArea]: value }
       };
     });
+  };
+  postNewArticle = e => {
+    e.preventDefault();
+    this.setState(prevState => {
+      return {
+        newArticle: { ...prevState.newArticle, author: this.props.user }
+      };
+    });
+    const newArticle = this.state.newArticle;
+
+    console.log(newArticle);
+    postArticle(newArticle);
   };
 }
 

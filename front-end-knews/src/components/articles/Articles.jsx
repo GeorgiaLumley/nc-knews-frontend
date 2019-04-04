@@ -11,6 +11,7 @@ class Articles extends Component {
     filter: { order: "desc", sortBy: "created_at" }
   };
   render() {
+    console.log(this.props.user);
     return (
       <div>
         <CreateArticleButton />
