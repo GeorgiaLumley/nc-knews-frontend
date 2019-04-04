@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { fetchTopics, postArticle } from "../../axios";
-
+import { navigate } from "@reach/router";
 class CreateArticle extends Component {
   state = {
     availableTopics: [],
@@ -58,6 +58,11 @@ class CreateArticle extends Component {
     fetchTopics().then(res => {
       this.setState({ availableTopics: res });
     });
+    this.setState(prevState => {
+      return {
+        newArticle: { ...prevState.newArticle, author: this.props.user }
+      };
+    });
   }
   inputChanged = e => {
     const inputArea = e.target.name;
@@ -71,15 +76,13 @@ class CreateArticle extends Component {
   };
   postNewArticle = e => {
     e.preventDefault();
-    this.setState(prevState => {
-      return {
-        newArticle: { ...prevState.newArticle, author: this.props.user }
-      };
-    });
+
     const newArticle = this.state.newArticle;
 
-    console.log(newArticle);
-    postArticle(newArticle);
+    postArticle(newArticle).then(article => {
+      console.log(article);
+      navigate(`/articles/${article.article_id}`);
+    });
   };
 }
 

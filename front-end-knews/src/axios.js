@@ -52,10 +52,11 @@ export const fetchTopics = async blank => {
 };
 
 export const postArticle = async newArticle => {
-  const res = await axios
+  const { data } = await axios
     .post("https://nc-knews-lumley.herokuapp.com/api/articles", newArticle)
-    .then(res => console.log(res.data))
+
     .catch(err => {
       console.log(err);
     });
+  return data.article[0];
 };
