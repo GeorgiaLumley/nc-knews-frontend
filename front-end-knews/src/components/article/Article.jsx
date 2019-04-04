@@ -17,7 +17,7 @@ class Article extends Component {
           created={this.state.article.created_at}
         />
         <p id='body'>{this.state.article.body}</p>
-        <div>
+        <div id='votes'>
           <p>{this.state.article.votes + this.state.voteChange}</p>
           <span role='img'>
             <button
@@ -47,7 +47,6 @@ class Article extends Component {
       this.setState({ article });
     });
   }
-
   updateVote = value => {
     updateArticleVote(value, this.props.article_id);
     this.setState(prevState => {
