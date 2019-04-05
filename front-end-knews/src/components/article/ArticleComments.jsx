@@ -1,6 +1,12 @@
 import React, { Component } from "react";
-import { fetchCommentsByArticleId, updateArticleVote } from "../../axios";
+import { navigate } from "@reach/router";
+import {
+  fetchCommentsByArticleId,
+  updateArticleVote,
+  deleteCommentRequest
+} from "../../axios";
 import CommentBox from "./CommentBox";
+import DeleteCommentButton from "./DeleteCommentButton";
 class ArticleComments extends Component {
   state = {
     comments: [],
@@ -21,6 +27,14 @@ class ArticleComments extends Component {
                   <div>
                     <li key={comment.comment_id}>
                       <div className='comment'>
+                        {comment.author === this.props.user ? (
+                          <DeleteCommentButton
+                            deleteComment={this.deleteComment}
+                            comment_id={comment.comment_id}
+                          />
+                        ) : (
+                          <></>
+                        )}
                         <p id='commentAuthor'>{comment.author}</p>
                         <p id='commentBody'>{comment.body}</p>
                       </div>
@@ -68,7 +82,6 @@ class ArticleComments extends Component {
     });
   }
   updateComments = newComment => {
-  
     this.setState(prevState => {
       return { comments: [...prevState.comments, newComment] };
     });
@@ -81,6 +94,11 @@ class ArticleComments extends Component {
     this.setState(prevState => {
       return { voteChange: prevState.voteChange + value };
     });
+  };
+  deleteComment = e => {
+    deleteCommentRequest(e.target.name).then(res =>
+      navigate(`/articles/${this.props.article_id}`)
+    );
   };
 }
 

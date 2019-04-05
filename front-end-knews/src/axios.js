@@ -55,7 +55,6 @@ export const fetchTopics = async blank => {
 export const postArticle = async newArticle => {
   const { data } = await axios
     .post("https://nc-knews-lumley.herokuapp.com/api/articles", newArticle)
-
     .catch(err => {
       console.log(err);
     });
@@ -121,6 +120,13 @@ export const fetchCommentsByAuthor = async author => {
 export const deleteArticleRequest = async article_id => {
   const { data } = await axios
     .delete(`https://nc-knews-lumley.herokuapp.com/api/articles/${article_id}`)
+    .catch(err => console.log(err));
+  return data;
+};
+
+export const deleteCommentRequest = async comment_id => {
+  const { data } = await axios
+    .delete(`https://nc-knews-lumley.herokuapp.com/api/comments/${comment_id}`)
     .catch(err => console.log(err));
   return data;
 };

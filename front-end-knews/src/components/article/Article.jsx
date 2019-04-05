@@ -16,7 +16,6 @@ class Article extends Component {
     voteChange: 0
   };
   render() {
-    console.log(this.props.user);
     return (
       <div className='article'>
         <ArticleTitleGrid
@@ -25,10 +24,7 @@ class Article extends Component {
           created={this.state.article.created_at}
         />
         {this.props.user === this.state.article.author ? (
-          <DeleteButton
-            article_id={this.state.article.article_id}
-            deleteArticle={this.deleteArticle}
-          />
+          <DeleteButton deleteArticle={this.deleteArticle} />
         ) : (
           <> </>
         )}

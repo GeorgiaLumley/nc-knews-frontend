@@ -15,7 +15,7 @@ class UserProfile extends Component {
         <h2>Your Articles</h2>
         <DisplayArticles articles={this.state.articles} />
         <h2>Your Comments</h2>
-        <UserComments comments={this.state.comments} />
+        <UserComments comments={this.state.comments} user={this.props.user} />
       </div>
     );
   }

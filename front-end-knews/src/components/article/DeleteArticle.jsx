@@ -1,6 +1,6 @@
 import React from "react";
 
-const DeleteButton = ({ article_id, deleteArticle }) => {
+const DeleteButton = ({ deleteArticle }) => {
   return (
     <div>
       <button type='submit' onClick={deleteArticle}>
