@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import { Router } from "@reach/router";
+import { Router, Link } from "@reach/router";
 import "./App.css";
 import Title from "./components/title";
 import Articles from "./components/articles/Articles";
 import Article from "./components/article/Article";
 import TopicList from "./components/topicList/TopicList";
+
 import CreateArticle from "./components/CreateArticle/CreateArticle";
+import UserProfile from "./components/profile/UserProfile";
 
 class App extends Component {
   state = {
@@ -25,7 +27,12 @@ class App extends Component {
             </button>
           </label>
         ) : (
-          <p>{`logged in as ${this.state.username}`}</p>
+          <div>
+            <p>{`logged in as ${this.state.username}`}</p>
+            <Link to={`user/${this.state.username}`}>
+              <button onClick={this.viewProfile}>Profile</button>
+            </Link>
+          </div>
         )}
         <Router className='app-main-route'>
           <TopicList path='/topics' />
@@ -34,12 +41,13 @@ class App extends Component {
             path='/articles/topic/:topic_id'
             user={this.state.username}
           />
-          <Articles path='/articles/:author' user={this.state.username} />
+          <Articles path='/articles/user/:author' user={this.state.username} />
           <Article path='/articles/:article_id' user={this.state.username} />
           <CreateArticle
             path='/article/createArticle'
             user={this.state.username}
           />
+          <UserProfile path='/user/:username' user={this.state.username} />
         </Router>
       </div>
     );

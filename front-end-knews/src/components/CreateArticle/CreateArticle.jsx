@@ -15,8 +15,8 @@ class CreateArticle extends Component {
   };
   render() {
     return (
-      <form>
-        <label for='title'>
+      <form htmlFor='articleCreation'>
+        <label htmlFor='title'>
           Title:
           <input type='text' name='title' onChange={this.inputChanged} />
         </label>

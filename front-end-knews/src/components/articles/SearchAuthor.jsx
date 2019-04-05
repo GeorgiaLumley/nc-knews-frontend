@@ -21,12 +21,11 @@ class SearchAuthor extends Component {
   }
   setAuthor = e => {
     const author = e.target.value;
-   
+
     this.setState({ author });
   };
   searchAuthor = () => {
-
-    navigate(`/articles/${this.state.author}`);
+    navigate(`/articles/user/${this.state.author}`);
   };
 }
 

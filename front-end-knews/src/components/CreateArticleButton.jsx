@@ -3,7 +3,7 @@ import { Link } from "@reach/router";
 const CreateArticleButton = () => {
   return (
     <Link to='/article/createArticle'>
-      <label for='createArticle'>
+      <label htmlFor='createArticle'>
         <button type='submit' name='createArticle'>
           Create Article
         </button>

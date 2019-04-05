@@ -36,6 +36,7 @@ class Articles extends Component {
         this.setState({ articles: res })
       );
     } else if (this.props.author) {
+      console.log(this.props.author);
       fetchArticlesByAuthor(this.props.author).then(res =>
         this.setState({ articles: res })
       );

@@ -22,6 +22,7 @@ export const fetchArticleById = async article_id => {
   const { data } = await axios
     .get(`https://nc-knews-lumley.herokuapp.com/api/articles/${article_id}`)
     .catch(err => console.log(err));
+
   return data.article;
 };
 
@@ -98,6 +99,7 @@ export const fetchFilteredArticleWithTopic = async (order, sortBy, topic) => {
 };
 
 export const fetchArticlesByAuthor = async author => {
+  console.log(author);
   const { data } = await axios
     .get(`https://nc-knews-lumley.herokuapp.com/api/articles?author=${author}`)
     .catch(err => {
@@ -105,4 +107,20 @@ export const fetchArticlesByAuthor = async author => {
     });
 
   return data.filtered;
+};
+
+export const fetchCommentsByAuthor = async author => {
+  const { data } = await axios
+    .get(`https://nc-knews-lumley.herokuapp.com/api/comments?author=${author}`)
+    .catch(err => {
+      console.log(err);
+    });
+  return data.comments;
+};
+
+export const deleteArticleRequest = async article_id => {
+  const { data } = await axios
+    .delete(`https://nc-knews-lumley.herokuapp.com/api/articles/${article_id}`)
+    .catch(err => console.log(err));
+  return data;
 };

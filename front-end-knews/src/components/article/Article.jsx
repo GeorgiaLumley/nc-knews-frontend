@@ -1,7 +1,14 @@
 import React, { Component } from "react";
-import { fetchArticleById, updateArticleVote } from "../../axios";
+import { navigate } from "@reach/router";
+import {
+  fetchArticleById,
+  updateArticleVote,
+  deleteArticleRequest
+} from "../../axios";
 import ArticleComments from "./ArticleComments";
 import ArticleTitleGrid from "./articleTitleGrid";
+
+import DeleteButton from "./DeleteArticle";
 
 class Article extends Component {
   state = {
@@ -9,6 +16,7 @@ class Article extends Component {
     voteChange: 0
   };
   render() {
+    console.log(this.props.user);
     return (
       <div className='article'>
         <ArticleTitleGrid
@@ -16,6 +24,15 @@ class Article extends Component {
           author={this.state.article.author}
           created={this.state.article.created_at}
         />
+        {this.props.user === this.state.article.author ? (
+          <DeleteButton
+            article_id={this.state.article.article_id}
+            deleteArticle={this.deleteArticle}
+          />
+        ) : (
+          <> </>
+        )}
+
         <p id='body'>{this.state.article.body}</p>
         <div id='votes'>
           <p>{this.state.article.votes + this.state.voteChange}</p>
@@ -51,6 +68,12 @@ class Article extends Component {
     updateArticleVote(value, this.props.article_id);
     this.setState(prevState => {
       return { voteChange: prevState.voteChange + value };
+    });
+  };
+  deleteArticle = () => {
+    deleteArticleRequest(this.props.article_id).then(res => {
+      navigate("/");
+      console.log("hi", res);
     });
   };
 }
