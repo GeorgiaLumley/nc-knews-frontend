@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { navigate } from "@reach/router";
+
 import {
   fetchCommentsByArticleId,
   updateArticleVote,
@@ -95,9 +95,15 @@ class ArticleComments extends Component {
       return { voteChange: prevState.voteChange + value };
     });
   };
-  deleteComment = e => {
-    deleteCommentRequest(e.target.name).then(res =>
-      navigate(`/articles/${this.props.article_id}`)
+  deleteComment = comment_id => {
+    console.log("in the delete");
+    const oldComments = this.state.comments;
+    const newComments = oldComments.filter(comment => {
+      return comment.comment_id !== comment_id;
+    });
+    console.log(oldComments.length, newComments.length);
+    deleteCommentRequest(comment_id).then(
+      this.setState({ comments: newComments })
     );
   };
 }

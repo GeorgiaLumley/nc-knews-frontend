@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Router, Link } from "@reach/router";
+import { fetchAllUsers } from "./axios";
 import "./App.css";
 import Title from "./components/title";
 import Articles from "./components/articles/Articles";
@@ -12,7 +13,8 @@ import UserProfile from "./components/profile/UserProfile";
 class App extends Component {
   state = {
     username: "",
-    loggedIn: false
+    loggedIn: false,
+    validUsername: false
   };
   render() {
     return (
@@ -58,6 +60,12 @@ class App extends Component {
   };
   LoggedIn = e => {
     if (this.state.username.length === 0) this.setState({ loggedIn: false });
+    fetchAllUsers().then(res => {
+      console.log(res);
+      if (res.includes(this.state.username)) {
+        this.setState({ validUsername: true });
+      }
+    });
     this.setState({ loggedIn: true });
   };
 }

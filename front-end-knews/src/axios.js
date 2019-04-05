@@ -130,3 +130,20 @@ export const deleteCommentRequest = async comment_id => {
     .catch(err => console.log(err));
   return data;
 };
+
+export const createNewTopic = async topic => {
+  const { data } = await axios
+    .post(`https://nc-knews-lumley.herokuapp.com/api/topics`, topic)
+    .catch(err => console.log(err));
+
+  return data.topic;
+};
+
+export const fetchAllUsers = async blank => {
+  const { data } = await axios
+    .get(`https://nc-knews-lumley.herokuapp.com/api/users`)
+    .catch(err => console.log(err));
+  return data.users;
+};
+
+

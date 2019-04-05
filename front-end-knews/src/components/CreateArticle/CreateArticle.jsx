@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { fetchTopics, postArticle } from "../../axios";
 import { navigate } from "@reach/router";
+import CreateNewTopic from "./CreateNewTopic";
 class CreateArticle extends Component {
   state = {
     availableTopics: [],
@@ -11,9 +12,11 @@ class CreateArticle extends Component {
       topic: "",
       author: ""
     },
-    readyToSubmit: false
+    readyToSubmit: false,
+    createNewTopic: false
   };
   render() {
+    console.log(this.state.availableTopics);
     return (
       <form htmlFor='articleCreation'>
         <label htmlFor='title'>
@@ -33,9 +36,16 @@ class CreateArticle extends Component {
             );
           })}
         </select>
-        <button>Create New Topic Placeholder</button>
+        {this.state.createNewTopic ? (
+          <CreateNewTopic
+            updateTopics={this.updateTopics}
+            topicCreated={this.toggleTopicFalse}
+          />
+        ) : (
+          <button onClick={this.toggleTopicTrue}>Create New Topic </button>
+        )}
         <br />
-        <label for='body'>
+        <label htmlFor='body'>
           Article:
           <textarea
             rows='4'
@@ -81,6 +91,18 @@ class CreateArticle extends Component {
 
     postArticle(newArticle).then(article => {
       navigate(`/articles/${article.article_id}`);
+    });
+  };
+  toggleTopicTrue = () => {
+    this.setState({ createNewTopic: true });
+  };
+  toggleTopicFalse = () => {
+    this.setState({ createNewTopic: false });
+  };
+  updateTopics = topic => {
+    console.log(topic);
+    this.setState(prevState => {
+      return { availableTopics: [...prevState.availableTopics, topic] };
     });
   };
 }
