@@ -3,7 +3,7 @@ import React from "react";
 const FilterForm = ({ updateState, filterArticles }) => {
   return (
     <form>
-      <select onChange={updateState} name='order'>
+      <select className='selectBox' onChange={updateState} name='order'>
         <option value='desc'>descending</option>
         <option value='asc'>ascending</option>
       </select>
