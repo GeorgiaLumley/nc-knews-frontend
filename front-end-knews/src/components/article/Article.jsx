@@ -56,6 +56,7 @@ class Article extends Component {
             </button>
           </span>
         </div>
+        
         <ArticleComments
           article_id={this.props.article_id}
           user={this.props.user}

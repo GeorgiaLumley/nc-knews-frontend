@@ -24,6 +24,7 @@ class ArticleComments extends Component {
             comments.map(comment => {
               return (
                 <div>
+                  <h3>Comments</h3>
                   <div>
                     <li key={comment.comment_id}>
                       <div className='comment'>
@@ -64,10 +65,6 @@ class ArticleComments extends Component {
             })
           )}
         </ul>
-
-        <button className='button' onClick={this.addNewComment}>
-          Add Comment
-        </button>
         {this.state.addComment ? (
           <CommentBox
             user={this.props.user}
@@ -77,6 +74,9 @@ class ArticleComments extends Component {
         ) : (
           <> </>
         )}
+        <button className='button' onClick={this.addNewComment}>
+          Add Comment
+        </button>
       </div>
     );
   }

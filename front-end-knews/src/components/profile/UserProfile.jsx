@@ -12,6 +12,7 @@ class UserProfile extends Component {
     return (
       <div>
         <h2>Profile</h2>
+
         <h2>Your Articles</h2>
         <DisplayArticles articles={this.state.articles} />
         <h2>Your Comments</h2>

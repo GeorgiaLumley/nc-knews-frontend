@@ -145,5 +145,3 @@ export const fetchAllUsers = async blank => {
     .catch(err => console.log(err));
   return data.users;
 };
-
-

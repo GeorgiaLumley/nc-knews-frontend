@@ -7,20 +7,22 @@ const UserComments = ({ comments, user }) => {
       {comments.length === 0 ? (
         <p>There are no comments yet</p>
       ) : (
-        comments.map(comment => {
-          return (
-            <div key='comment'>
-              <li key={comment.comment_id}>
-                <div className='comment'>
-                  <Link to={`/articles/${comment.article_id}`}>
-                    <p id='commentAuthor'>{comment.author}</p>
-                    <p id='commentBody'>{comment.body}</p>
-                  </Link>
-                </div>
-              </li>
-            </div>
-          );
-        })
+        <ul id='userComments'>
+          {comments.map(comment => {
+            return (
+              <div>
+                <li key={comment.comment_id} id='userCommentItem'>
+                  <div>
+                    <Link to={`/articles/${comment.article_id}`}>
+                      <p id='commentAuthor'>{comment.author}</p>
+                      <p id='commentBody'>{comment.body}</p>
+                    </Link>
+                  </div>
+                </li>
+              </div>
+            );
+          })}
+        </ul>
       )}
     </div>
   );

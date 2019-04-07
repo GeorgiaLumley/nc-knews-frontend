@@ -9,8 +9,8 @@ const FilterForm = ({ updateState, filterArticles }) => {
         onChange={updateState}
         name='order'
       >
-        <option value='desc'>descending</option>
-        <option value='asc'>ascending</option>
+        <option value='desc'>Descending</option>
+        <option value='asc'>Ascending</option>
       </select>
       <select
         className='selectBox'
@@ -22,7 +22,12 @@ const FilterForm = ({ updateState, filterArticles }) => {
         <option value='votes'>Votes</option>
         <option value='created_at'>Date</option>
       </select>
-      <button className='button' id="filterButton"onClick={filterArticles} type='submit'>
+      <button
+        className='button'
+        id='filterButton'
+        onClick={filterArticles}
+        type='submit'
+      >
         filter
       </button>
     </form>
