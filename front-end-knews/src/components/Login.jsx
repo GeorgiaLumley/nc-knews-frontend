@@ -5,7 +5,12 @@ const Login = ({ usernameChange }) => {
     <div>
       <label for='usernameInput'>
         Username
-        <input onChange={this.usernameChange} type='text' />
+        <input
+          className='inputBox'
+          id='username'
+          onChange={this.usernameChange}
+          type='text'
+        />
       </label>
     </div>
   );

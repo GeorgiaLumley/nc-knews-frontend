@@ -23,7 +23,11 @@ class App extends Component {
         {!this.state.loggedIn ? (
           <label>
             Username
-            <input onChange={this.usernameChange} type='text' />
+            <input
+              className='inputBox'
+              onChange={this.usernameChange}
+              type='text'
+            />
             <button
               type='submit'
               className='button'

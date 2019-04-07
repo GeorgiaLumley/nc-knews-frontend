@@ -5,6 +5,9 @@
 #mainTitle {
   text-align: center;
 }
+#mainTitle::first-letter {
+  color: rgb(188, 24, 53);
+}
 
 .article {
   width: 100vw;
@@ -23,7 +26,6 @@
 
 #title {
   grid-area: title;
-  border: 1px blue solid;
 }
 #articlesTitle {
   grid-area: articleTitle;
@@ -41,13 +43,21 @@
   grid-area: body;
 }
 #votes {
+  margin-top: 35px;
   grid-area: votes;
+}
+
+#voteUp.disabled {
+  background-color: #143c47;
+}
+#voteDown.disabled {
+  background-color: #143c47;
 }
 
 .comments {
   overflow-y: scroll;
   grid-area: comments;
-  border: 1px red solid;
+
   margin: 1%;
 }
 
@@ -76,37 +86,43 @@
   grid-area: votes;
 }
 
-#profileButton {
-  margin-top: -8.5%;
-  float: right;
-  background-color: #4caf50; /* Green */
+.button {
+  background-color: #43abc9;
+  color: white;
   border-radius: 8px;
   border: none;
   color: white;
-  padding: 16px 32px;
+  padding: 10px 28px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 14px;
   margin: 4px 2px;
-  -webkit-transition-duration: 0.4s; /* Safari */
+  -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
   cursor: pointer;
 }
-.button {
-  background-color: white;
-  color: black;
-  border: 2px solid #e7e7e7;
+#loggedIn {
+  position: relative;
+}
+
+#profileButton {
+  position: relative;
+  margin-top: -10px;
+  float: right;
 }
 
 .button:hover {
-  background-color: #e7e7e7;
+  background-color: #abc943;
+  color: black;
 }
 .articleList {
   padding: 1%;
 }
 .articleItem {
   list-style-type: none;
+  border: none;
+  border-bottom: 2px solid #43abc9;
 }
 
 #filterForm {
@@ -149,19 +165,12 @@
   background-position: right 0.7em top 50%, 0 0;
   background-size: 0.65em auto, 100%;
 }
-/* .selectBox::-ms-expand {
-  display: none;
+
+.inputBox {
+  border: none;
+  border-bottom: 2px solid #43abc9;
 }
-.selectBox:hover {
-  border-color: #888;
+
+#searchAuthorContainer {
+  margin: 5px;
 }
-.selectBox:focus {
-  border-color: #aaa;
-  box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
-  box-shadow: 0 0 0 3px -moz-mac-focusring;
-  color: #222;
-  outline: none;
-}
-.selectBox option {
-  font-weight: normal;
-} */

@@ -35,13 +35,13 @@ class ArticleComments extends Component {
                         ) : (
                           <></>
                         )}
-                        <p id='commentAuthor'>{comment.author}</p>
+                        <p id='commentAuthor'>Author: {comment.author}</p>
                         <p id='commentBody'>{comment.body}</p>
                       </div>
                     </li>
                   </div>
                   <div id='commentVotes'>
-                    <p>{comment.votes + this.state.voteChange}</p>
+                    <p>Votes: {comment.votes + this.state.voteChange}</p>
                     <span role='img'>
                       <button
                         className='button'

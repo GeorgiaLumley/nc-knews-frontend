@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "@reach/router";
 import { navigate } from "@reach/router";
 import {
   fetchArticleById,
@@ -18,23 +19,27 @@ class Article extends Component {
   render() {
     return (
       <div className='article'>
-        <ArticleTitleGrid
-          title={this.state.article.title}
-          author={this.state.article.author}
-          created={this.state.article.created_at}
-        />
+        <Link to={"/"}>
+          <h4>All Articles</h4>
+        </Link>
         {this.props.user === this.state.article.author ? (
           <DeleteButton deleteArticle={this.deleteArticle} />
         ) : (
           <> </>
         )}
+        <ArticleTitleGrid
+          title={this.state.article.title}
+          author={this.state.article.author}
+          created={this.state.article.created_at}
+        />
 
         <p id='body'>{this.state.article.body}</p>
         <div id='votes'>
-          <p>{this.state.article.votes + this.state.voteChange}</p>
+          <p>Votes: {this.state.article.votes + this.state.voteChange}</p>
           <span role='img'>
             <button
               className='button'
+              id='voteUp'
               disabled={this.state.voteChange === 1}
               onClick={() => this.updateVote(1)}
             >
@@ -43,6 +48,7 @@ class Article extends Component {
 
             <button
               className='button'
+              id='voteDown'
               disabled={this.state.voteChange === -1}
               onClick={() => this.updateVote(-1)}
             >

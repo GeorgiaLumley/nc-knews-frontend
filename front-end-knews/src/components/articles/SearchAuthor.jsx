@@ -8,10 +8,10 @@ class SearchAuthor extends Component {
   };
   render() {
     return (
-      <div>
+      <div id='searchAuthorContainer'>
         <label>
           Search Author
-          <input type='text' onChange={this.setAuthor} />
+          <input  type='text'  className='inputBox' onChange={this.setAuthor} />
         </label>
         <button className='button' type='submit' onClick={this.searchAuthor}>
           Search

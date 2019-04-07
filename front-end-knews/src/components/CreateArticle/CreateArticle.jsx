@@ -21,7 +21,12 @@ class CreateArticle extends Component {
       <form htmlFor='articleCreation'>
         <label htmlFor='title'>
           Title:
-          <input type='text' name='title' onChange={this.inputChanged} />
+          <input
+            className='inputBox'
+            type='text'
+            name='title'
+            onChange={this.inputChanged}
+          />
         </label>
         Topic:
         <select name='topic' id='topic' onChange={this.inputChanged}>
@@ -42,7 +47,9 @@ class CreateArticle extends Component {
             topicCreated={this.toggleTopicFalse}
           />
         ) : (
-            <button className='button' onClick={this.toggleTopicTrue}>Create New Topic </button>
+          <button className='button' onClick={this.toggleTopicTrue}>
+            Create New Topic{" "}
+          </button>
         )}
         <br />
         <label htmlFor='body'>
@@ -57,7 +64,9 @@ class CreateArticle extends Component {
         {this.state.newArticle.title &&
         this.state.newArticle.body &&
         this.state.newArticle.topic ? (
-            <button className='button' onClick={this.postNewArticle}>submit</button>
+          <button className='button' onClick={this.postNewArticle}>
+            submit
+          </button>
         ) : (
           <p>Fill in all Fields</p>
         )}

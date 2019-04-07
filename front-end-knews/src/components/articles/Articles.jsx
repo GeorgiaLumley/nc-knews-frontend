@@ -21,6 +21,7 @@ class Articles extends Component {
       <div>
         {this.props.user ? <CreateArticleButton /> : <> </>}
         <TopicLink />
+        <h2>Articles</h2>
         <SearchAuthor />
         <FilterForm
           updateState={this.changeStateByFilterOptions}
