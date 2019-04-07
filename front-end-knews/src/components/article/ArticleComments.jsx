@@ -44,12 +44,14 @@ class ArticleComments extends Component {
                     <p>{comment.votes + this.state.voteChange}</p>
                     <span role='img'>
                       <button
+                        className='button'
                         disabled={this.state.voteChange === 1}
                         onClick={() => this.updateVote(1)}
                       >
                         Up
                       </button>
                       <button
+                        className='button'
                         disabled={this.state.voteChange === -1}
                         onClick={() => this.updateVote(-1)}
                       >
@@ -63,7 +65,9 @@ class ArticleComments extends Component {
           )}
         </ul>
 
-        <button onClick={this.addNewComment}>Add Comment</button>
+        <button className='button' onClick={this.addNewComment}>
+          Add Comment
+        </button>
         {this.state.addComment ? (
           <CommentBox
             user={this.props.user}

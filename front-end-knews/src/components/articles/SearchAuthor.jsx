@@ -13,7 +13,7 @@ class SearchAuthor extends Component {
           Search Author
           <input type='text' onChange={this.setAuthor} />
         </label>
-        <button type='submit' onClick={this.searchAuthor}>
+        <button className='button' type='submit' onClick={this.searchAuthor}>
           Search
         </button>
       </div>

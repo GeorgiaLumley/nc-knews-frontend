@@ -42,7 +42,7 @@ class CreateArticle extends Component {
             topicCreated={this.toggleTopicFalse}
           />
         ) : (
-          <button onClick={this.toggleTopicTrue}>Create New Topic </button>
+            <button className='button' onClick={this.toggleTopicTrue}>Create New Topic </button>
         )}
         <br />
         <label htmlFor='body'>
@@ -57,7 +57,7 @@ class CreateArticle extends Component {
         {this.state.newArticle.title &&
         this.state.newArticle.body &&
         this.state.newArticle.topic ? (
-          <button onClick={this.postNewArticle}>submit</button>
+            <button className='button' onClick={this.postNewArticle}>submit</button>
         ) : (
           <p>Fill in all Fields</p>
         )}

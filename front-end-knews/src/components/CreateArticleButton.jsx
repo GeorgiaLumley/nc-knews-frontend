@@ -4,7 +4,7 @@ const CreateArticleButton = () => {
   return (
     <Link to='/article/createArticle'>
       <label htmlFor='createArticle'>
-        <button type='submit' name='createArticle'>
+        <button className='button' type='submit' name='createArticle'>
           Create Article
         </button>
       </label>

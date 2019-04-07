@@ -10,7 +10,7 @@ class CommentBox extends Component {
       <form>
         Comment:
         <textarea onChange={this.updateBody} />
-        <button type='submit' onClick={this.postComment}>
+        <button className='button' type='submit' onClick={this.postComment}>
           Post Your Comment
         </button>
       </form>

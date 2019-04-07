@@ -19,7 +19,7 @@ class Articles extends Component {
   render() {
     return (
       <div>
-        <CreateArticleButton />
+        {this.props.user ? <CreateArticleButton /> : <> </>}
         <TopicLink />
         <SearchAuthor />
         <FilterForm

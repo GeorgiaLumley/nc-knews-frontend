@@ -12,7 +12,7 @@ const FilterForm = ({ updateState, filterArticles }) => {
         <option value='votes'>Votes</option>
         <option value='created_at'>Date</option>
       </select>
-      <button onClick={filterArticles} type='submit'>
+      <button className='button' onClick={filterArticles} type='submit'>
         filter
       </button>
     </form>

@@ -34,6 +34,7 @@ class Article extends Component {
           <p>{this.state.article.votes + this.state.voteChange}</p>
           <span role='img'>
             <button
+              className='button'
               disabled={this.state.voteChange === 1}
               onClick={() => this.updateVote(1)}
             >
@@ -41,6 +42,7 @@ class Article extends Component {
             </button>
 
             <button
+              className='button'
               disabled={this.state.voteChange === -1}
               onClick={() => this.updateVote(-1)}
             >

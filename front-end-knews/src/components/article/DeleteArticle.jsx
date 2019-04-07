@@ -3,7 +3,7 @@ import React from "react";
 const DeleteButton = ({ deleteArticle }) => {
   return (
     <div>
-      <button type='submit' onClick={deleteArticle}>
+      <button className='button' type='submit' onClick={deleteArticle}>
         Delete Article
       </button>
     </div>

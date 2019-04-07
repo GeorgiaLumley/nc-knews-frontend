@@ -24,17 +24,29 @@ class App extends Component {
           <label>
             Username
             <input onChange={this.usernameChange} type='text' />
-            <button type='submit' value='logIn' onClick={this.LoggedIn}>
+            <button
+              type='submit'
+              className='button'
+              value='logIn'
+              onClick={this.LoggedIn}
+            >
               Login
             </button>
           </label>
         ) : (
-          <div>
-            <p>{`logged in as ${this.state.username}`}</p>
+          <span id='loggedIn'>
+            <p id='loggedInUser'>{`logged in as ${this.state.username}`}</p>
             <Link to={`user/${this.state.username}`}>
-              <button onClick={this.viewProfile}>Profile</button>
+              <button
+                id='profileButton'
+                type='button'
+                className='button'
+                onClick={this.viewProfile}
+              >
+                Profile
+              </button>
             </Link>
-          </div>
+          </span>
         )}
         <Router className='app-main-route'>
           <TopicList path='/topics' />
