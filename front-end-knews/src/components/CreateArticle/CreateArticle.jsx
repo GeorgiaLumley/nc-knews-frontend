@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { fetchTopics, postArticle } from "../../axios";
+import { fetchTopics, postArticle, deleteTopicReq } from "../../axios";
 import { navigate } from "@reach/router";
 import CreateNewTopic from "./CreateNewTopic";
 class CreateArticle extends Component {
@@ -27,6 +27,7 @@ class CreateArticle extends Component {
             name='title'
             onChange={this.inputChanged}
           />
+          <br />
         </label>
         Topic:
         <select name='topic' id='topic' onChange={this.inputChanged}>
@@ -41,13 +42,14 @@ class CreateArticle extends Component {
             );
           })}
         </select>
+        <p id='newTopicText'>Need a different topic, Make your own:</p>
         {this.state.createNewTopic ? (
           <CreateNewTopic
             updateTopics={this.updateTopics}
             topicCreated={this.toggleTopicFalse}
           />
         ) : (
-          <button className='button' onClick={this.toggleTopicTrue}>
+          <button className='button' id='createTopicButton' onClick={this.toggleTopicTrue}>
             Create New Topic{" "}
           </button>
         )}
@@ -70,6 +72,7 @@ class CreateArticle extends Component {
         ) : (
           <p>Fill in all Fields</p>
         )}
+        {/* <button onClick={this.buttonDelete}>delete topic</button> */}
       </form>
     );
   }
@@ -109,10 +112,12 @@ class CreateArticle extends Component {
     this.setState({ createNewTopic: false });
   };
   updateTopics = topic => {
-    console.log(topic);
     this.setState(prevState => {
       return { availableTopics: [...prevState.availableTopics, topic] };
     });
+  };
+  buttonDelete = e => {
+    deleteTopicReq(test).then(res => console.log(res));
   };
 }
 

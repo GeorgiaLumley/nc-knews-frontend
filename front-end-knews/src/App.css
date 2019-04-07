@@ -182,3 +182,12 @@
 #searchAuthorContainer {
   margin: 5px;
 }
+
+#newTopicText {
+  font-size: 10px;
+  float: left;
+  margin-top: 10px;
+}
+#createTopicButton {
+  float: right;
+}

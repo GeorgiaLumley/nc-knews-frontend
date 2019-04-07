@@ -145,3 +145,10 @@ export const fetchAllUsers = async blank => {
     .catch(err => console.log(err));
   return data.users;
 };
+
+export const deleteTopicReq = async topic => {
+  const { data } = await axios
+    .get(`https://nc-knews-lumley.herokuapp.com/api/topics/${topic}`)
+    .catch(err => console.log(err));
+  return data;
+};
