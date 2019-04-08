@@ -238,3 +238,7 @@
   text-align: center;
   background-color: #feefb3;
 }
+
+#topicListUl {
+  list-style-type: none;
+}
