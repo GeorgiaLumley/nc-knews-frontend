@@ -45,7 +45,6 @@ class Articles extends Component {
       fetchArticlesByAuthor(this.props.author)
         .then(res => this.setState({ articles: res }))
         .catch(err => {
-         
           this.setState({ articleError: err });
         });
     } else {

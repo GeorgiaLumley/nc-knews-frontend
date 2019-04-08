@@ -16,12 +16,12 @@ class CreateArticle extends Component {
     createNewTopic: false
   };
   render() {
-    console.log(this.state.availableTopics);
     return (
       <form htmlFor='articleCreation'>
         <label htmlFor='title'>
           Title:
           <input
+            data-cy='createTitle'
             className='inputBox'
             type='text'
             name='title'
@@ -30,7 +30,7 @@ class CreateArticle extends Component {
           <br />
         </label>
         Topic:
-        <select name='topic' id='topic' onChange={this.inputChanged}>
+        <select data-cy='topicSelector' name='topic' id='topic' onChange={this.inputChanged}>
           <option id='defaultTopic' value='' disabled selected>
             Select a Topic
           </option>
@@ -49,8 +49,13 @@ class CreateArticle extends Component {
             topicCreated={this.toggleTopicFalse}
           />
         ) : (
-          <button className='button' id='createTopicButton' onClick={this.toggleTopicTrue}>
-            Create New Topic{" "}
+          <button
+          data-cy='createNewTopic'
+            className='button'
+            id='createTopicButton'
+            onClick={this.toggleTopicTrue}
+          >
+            Create New Topic
           </button>
         )}
         <br />

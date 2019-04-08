@@ -10,14 +10,19 @@ class CreateNewTopic extends Component {
       <div>
         Topic name:
         <input
+          data-cy='newTopicName'
           className='inputBox'
           onChange={this.newTopicName}
           name='slug'
           type='text'
         />
         Topic description:
-        <textarea onChange={this.newTopicName} name='description' />
-        <button className='button' onClick={this.addNewTopic} type='submit'>
+        <textarea
+          data-cy='newTopicDescription'
+          onChange={this.newTopicName}
+          name='description'
+        />
+        <button data-cy='addNewTopicButton'className='button' onClick={this.addNewTopic} type='submit'>
           Add Topic
         </button>
       </div>

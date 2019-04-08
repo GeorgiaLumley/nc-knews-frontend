@@ -19,7 +19,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <Title />
+        <Title data-cy='title' />
         {!this.state.loggedIn ? (
           <label>
             Username
@@ -83,6 +83,10 @@ class App extends Component {
       }
     });
     this.setState({ loggedIn: true });
+    this.saveUserName();
+  };
+  saveUserName = () => {
+    localStorage.setItem(this.state.username, JSON.stringify(this.state));
   };
 }
 

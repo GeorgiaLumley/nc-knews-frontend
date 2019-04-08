@@ -3,7 +3,7 @@ import { Link } from "@reach/router";
 
 const DisplayArticles = ({ articles }) => {
   return (
-    <ul className='articleList'>
+    <ul className='articleList' data-cy='articlesList'>
       {articles.map(article => {
         return (
           <li className='articleItem' key={article.article_id}>
