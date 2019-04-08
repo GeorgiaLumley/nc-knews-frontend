@@ -23,13 +23,14 @@ class Article extends Component {
           <Link to={"/"}>
             <h4>All Articles</h4>
           </Link>
-        </div>
-        <div className='article'>
           {this.props.user === this.state.article.author ? (
             <DeleteButton deleteArticle={this.deleteArticle} />
           ) : (
-            <> </>
-          )}
+              <> </>
+            )}
+        </div>
+        <div className='article'>
+       
           <ArticleTitleGrid
             title={this.state.article.title}
             author={this.state.article.author}

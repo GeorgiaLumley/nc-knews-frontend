@@ -23,6 +23,9 @@
     "body body"
     "comments  comments";
 }
+#deleteArticleButton {
+  float: center;
+}
 
 #title {
   grid-area: title;
