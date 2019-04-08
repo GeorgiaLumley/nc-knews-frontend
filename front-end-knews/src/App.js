@@ -50,10 +50,13 @@ class App extends Component {
                 Profile
               </button>
             </Link>
+            <button onClick={this.LoggedOut} className='button' id='logOutButton'>
+              Log Out
+            </button>
           </span>
         )}
         {this.state.validUsername && !this.state.loggedIn ? (
-          <p>invalid UserName</p>
+          <p className='errMsg'>Invalid UserName</p>
         ) : (
           <> </>
         )}
@@ -92,6 +95,9 @@ class App extends Component {
         this.setState({ validUsername: true });
       }
     });
+  };
+  LoggedOut = () => {
+    this.setState({ loggedIn: false });
   };
 }
 

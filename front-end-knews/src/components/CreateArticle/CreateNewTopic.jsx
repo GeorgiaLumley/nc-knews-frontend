@@ -18,6 +18,7 @@ class CreateNewTopic extends Component {
         />
         Topic description:
         <textarea
+          className='textArea'
           data-cy='newTopicDescription'
           onChange={this.newTopicName}
           name='description'

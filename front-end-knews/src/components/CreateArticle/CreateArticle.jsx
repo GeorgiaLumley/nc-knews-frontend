@@ -75,7 +75,7 @@ class CreateArticle extends Component {
         <label htmlFor='body' id='articleBody'>
           Article:
           <textarea
-            id='articleTexArea'
+            className='textArea'
             rows='4'
             cols='40'
             onChange={this.inputChanged}

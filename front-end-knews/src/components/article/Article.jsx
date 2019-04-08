@@ -26,11 +26,10 @@ class Article extends Component {
           {this.props.user === this.state.article.author ? (
             <DeleteButton deleteArticle={this.deleteArticle} />
           ) : (
-              <> </>
-            )}
+            <> </>
+          )}
         </div>
         <div className='article'>
-       
           <ArticleTitleGrid
             title={this.state.article.title}
             author={this.state.article.author}
@@ -40,7 +39,7 @@ class Article extends Component {
           <p id='body'>{this.state.article.body}</p>
           <div id='votes'>
             <p>Votes: {this.state.article.votes + this.state.voteChange}</p>
-            <span role='img'>
+            <span>
               <button
                 className='button'
                 id='voteUp'

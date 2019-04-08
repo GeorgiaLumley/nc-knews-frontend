@@ -23,3 +23,7 @@ First you should fork the project form gitHub and clone your own version.
 you can open the project in VS code, and run the scripts `npm install` then `npm start`. This should open a version of the app on your browser.
 A live version of the app can be found at https://nc-knews-lumley.netlify.com.
 The back-end of the project can be found at https://github.com/GeorgiaLumley/nc-knews.
+
+## Logging in
+
+You can login as a pre-created user, with the username `tickle122`.

@@ -9,7 +9,7 @@ class CommentBox extends Component {
     return (
       <form>
         Comment:
-        <textarea onChange={this.updateBody} />
+        <textarea className='textArea' onChange={this.updateBody} />
         <button className='button' type='submit' onClick={this.postComment}>
           Post Your Comment
         </button>

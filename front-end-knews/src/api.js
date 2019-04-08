@@ -75,9 +75,10 @@ export const addNewComment = async (article_id, comment) => {
 };
 
 export const fetchFilteredArticle = async (order, sortBy) => {
+  console.log(order, sortBy);
   const { data } = await axios
     .get(
-      `https://nc-knews-lumley.herokuapp.com/api/articles?order=${order}&&sortBy=${sortBy}`
+      `https://nc-knews-lumley.herokuapp.com/api/articles?order=${order}&&sort_by=${sortBy}`
     )
     .catch(err => {
       console.log(err);

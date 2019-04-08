@@ -14,13 +14,15 @@ import SearchAuthor from "./SearchAuthor";
 class Articles extends Component {
   state = {
     articles: [],
-    filter: { order: "desc", sortBy: "created_at" },
+    filter: { order: "desc", sort_By: "created_at" },
     articleError: null
   };
   render() {
     if (this.state.articleError)
       return (
-        <p id='errMsg'>Error: {this.state.articleError.msg}, Invalid Author</p>
+        <p className='errMsg'>
+          Error: {this.state.articleError.msg}, Invalid Author
+        </p>
       );
     return (
       <div>
@@ -76,7 +78,6 @@ class Articles extends Component {
   filterArticles = event => {
     event.preventDefault();
     const topic = this.props.topic_id;
-
     const order = this.state.filter.order;
     const sortBy = this.state.filter.sortBy;
     this.props.topic_id
