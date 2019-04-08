@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import Topics from "./Topics";
-import { fetchTopics } from "../../axios";
+import { fetchTopics } from "../../api";
 
 class TopicList extends Component {
   state = {

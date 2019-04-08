@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Router, Link } from "@reach/router";
-import { fetchAllUsers } from "./axios";
+import { fetchAllUsers } from "./api";
 import "./App.css";
 import Title from "./components/title";
 import Articles from "./components/articles/Articles";

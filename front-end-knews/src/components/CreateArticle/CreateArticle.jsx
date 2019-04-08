@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { fetchTopics, postArticle, deleteTopicReq } from "../../axios";
+import { fetchTopics, postArticle, deleteTopicReq } from "../../api";
 import { navigate } from "@reach/router";
 import CreateNewTopic from "./CreateNewTopic";
 class CreateArticle extends Component {

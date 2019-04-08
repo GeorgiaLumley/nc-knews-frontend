@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { createNewTopic } from "../../axios";
+import { createNewTopic } from "../../api";
 class CreateNewTopic extends Component {
   state = {
     slug: "",

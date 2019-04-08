@@ -4,7 +4,7 @@ import {
   fetchCommentsByArticleId,
   updateArticleVote,
   deleteCommentRequest
-} from "../../axios";
+} from "../../api";
 import CommentBox from "./CommentBox";
 import DeleteCommentButton from "./DeleteCommentButton";
 class ArticleComments extends Component {

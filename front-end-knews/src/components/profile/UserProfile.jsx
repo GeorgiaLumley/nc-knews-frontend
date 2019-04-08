@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { fetchArticlesByAuthor, fetchCommentsByAuthor } from "../../axios";
+import { fetchArticlesByAuthor, fetchCommentsByAuthor } from "../../api";
 
 import DisplayArticles from "../articles/DisplayArticles";
 import UserComments from "./UserComments";

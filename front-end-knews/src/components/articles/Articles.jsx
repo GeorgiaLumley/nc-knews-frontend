@@ -6,7 +6,7 @@ import {
   fetchFilteredArticle,
   fetchFilteredArticleWithTopic,
   fetchArticlesByAuthor
-} from "../../axios";
+} from "../../api";
 import FilterForm from "./sortingArticles/FilterForm";
 import CreateArticleButton from "../CreateArticleButton";
 import TopicLink from "../topicList/topicLink";

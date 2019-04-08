@@ -62,7 +62,6 @@ export const postArticle = async newArticle => {
 };
 
 export const addNewComment = async (article_id, comment) => {
-  console.log(comment);
   const { data } = await axios
     .post(
       `https://nc-knews-lumley.herokuapp.com/api/articles/${article_id}/comments`,
@@ -98,7 +97,7 @@ export const fetchFilteredArticleWithTopic = async (order, sortBy, topic) => {
 };
 
 export const fetchArticlesByAuthor = async author => {
-  const { data, status } = await axios
+  const { data } = await axios
     .get(`https://nc-knews-lumley.herokuapp.com/api/articles?author=${author}`)
     .catch(err => err.response);
   if (data.filtered) return data.filtered;

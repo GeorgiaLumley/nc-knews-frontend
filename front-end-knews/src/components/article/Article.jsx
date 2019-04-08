@@ -5,7 +5,7 @@ import {
   fetchArticleById,
   updateArticleVote,
   deleteArticleRequest
-} from "../../axios";
+} from "../../api";
 import ArticleComments from "./ArticleComments";
 import ArticleTitleGrid from "./articleTitleGrid";
 
@@ -43,7 +43,7 @@ class Article extends Component {
               disabled={this.state.voteChange === 1}
               onClick={() => this.updateVote(1)}
             >
-              Up
+              Vote Up
             </button>
 
             <button
@@ -52,11 +52,11 @@ class Article extends Component {
               disabled={this.state.voteChange === -1}
               onClick={() => this.updateVote(-1)}
             >
-              Down
+              Vote Down
             </button>
           </span>
         </div>
-        
+
         <ArticleComments
           article_id={this.props.article_id}
           user={this.props.user}

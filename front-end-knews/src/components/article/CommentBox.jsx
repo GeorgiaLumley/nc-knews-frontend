@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { addNewComment } from "../../axios";
+import { addNewComment } from "../../api";
 class CommentBox extends Component {
   state = {
     author: null,
