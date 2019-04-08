@@ -98,14 +98,16 @@ export const fetchFilteredArticleWithTopic = async (order, sortBy, topic) => {
 };
 
 export const fetchArticlesByAuthor = async author => {
-  console.log(author);
-  const { data } = await axios
+  const { data, status } = await axios
     .get(`https://nc-knews-lumley.herokuapp.com/api/articles?author=${author}`)
-    .catch(err => {
-      console.log(err);
-    });
-
-  return data.filtered;
+    .catch(err => err.response);
+  if (data.filtered) return data.filtered;
+  else {
+    console.log("in the err");
+    throw {
+      msg: data.msg
+    };
+  }
 };
 
 export const fetchCommentsByAuthor = async author => {

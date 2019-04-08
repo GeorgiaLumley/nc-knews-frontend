@@ -14,9 +14,14 @@ import SearchAuthor from "./SearchAuthor";
 class Articles extends Component {
   state = {
     articles: [],
-    filter: { order: "desc", sortBy: "created_at" }
+    filter: { order: "desc", sortBy: "created_at" },
+    articleError: null
   };
   render() {
+    if (this.state.articleError)
+      return (
+        <p id='errMsg'>Error: {this.state.articleError.msg}, Invalid Author</p>
+      );
     return (
       <div>
         {this.props.user ? <CreateArticleButton /> : <> </>}
@@ -37,10 +42,12 @@ class Articles extends Component {
         this.setState({ articles: res })
       );
     } else if (this.props.author) {
-      console.log(this.props.author);
-      fetchArticlesByAuthor(this.props.author).then(res =>
-        this.setState({ articles: res })
-      );
+      fetchArticlesByAuthor(this.props.author)
+        .then(res => this.setState({ articles: res }))
+        .catch(err => {
+         
+          this.setState({ articleError: err });
+        });
     } else {
       fetchAllArticles().then(res => this.setState({ articles: res }));
     }
