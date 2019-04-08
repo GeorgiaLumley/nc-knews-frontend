@@ -82,8 +82,6 @@ class App extends Component {
   LoggedIn = e => {
     if (this.state.username.length === 0) this.setState({ loggedIn: false });
     fetchAllUsers().then(res => {
-      console.log(res[0].username);
-
       const validUser = [];
       for (let i = 0; i < res.length; i++) {
         if (res[i].username === this.state.username) validUser.push(res[i]);

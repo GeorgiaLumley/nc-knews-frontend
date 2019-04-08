@@ -102,7 +102,6 @@ export const fetchArticlesByAuthor = async author => {
     .catch(err => err.response);
   if (data.filtered) return data.filtered;
   else {
-    console.log("in the err");
     throw {
       msg: data.msg
     };

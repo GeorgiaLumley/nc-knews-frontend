@@ -100,12 +100,11 @@ class ArticleComments extends Component {
     });
   };
   deleteComment = comment_id => {
-    console.log("in the delete");
     const oldComments = this.state.comments;
     const newComments = oldComments.filter(comment => {
       return comment.comment_id !== comment_id;
     });
-    console.log(oldComments.length, newComments.length);
+
     deleteCommentRequest(comment_id).then(
       this.setState({ comments: newComments })
     );

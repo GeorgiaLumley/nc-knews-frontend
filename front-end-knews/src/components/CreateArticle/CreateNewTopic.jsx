@@ -22,7 +22,12 @@ class CreateNewTopic extends Component {
           onChange={this.newTopicName}
           name='description'
         />
-        <button data-cy='addNewTopicButton'className='button' onClick={this.addNewTopic} type='submit'>
+        <button
+          data-cy='addNewTopicButton'
+          className='button'
+          onClick={this.addNewTopic}
+          type='submit'
+        >
           Add Topic
         </button>
       </div>
@@ -35,7 +40,6 @@ class CreateNewTopic extends Component {
   addNewTopic = event => {
     event.preventDefault();
     createNewTopic(this.state).then(res => {
-      console.log(res);
       this.props.updateTopics(res);
       this.props.topicCreated();
     });

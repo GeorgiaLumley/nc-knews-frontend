@@ -78,7 +78,6 @@ class Article extends Component {
   deleteArticle = () => {
     deleteArticleRequest(this.props.article_id).then(res => {
       navigate("/");
-      console.log("hi", res);
     });
   };
 }

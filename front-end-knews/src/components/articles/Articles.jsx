@@ -37,7 +37,6 @@ class Articles extends Component {
     );
   }
   componentDidMount() {
-    console.log("hhuhuhu");
     if (this.props.topic_id) {
       fetchArticlesWithTopic(this.props.topic_id).then(res =>
         this.setState({ articles: res })
