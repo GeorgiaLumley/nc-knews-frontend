@@ -174,20 +174,10 @@
   background-size: 0.65em auto, 100%;
 }
 
-.inputBox {
-  border: none;
-  border-bottom: 2px solid #43abc9;
-}
-
 #searchAuthorContainer {
   margin: 5px;
 }
 
-#newTopicText {
-  font-size: 10px;
-  float: left;
-  margin-top: 10px;
-}
 #createTopicButton {
   float: right;
 }
@@ -197,4 +187,54 @@
   background-color: #ffd2d2;
   margin: 10px 0px;
   padding: 12px;
+}
+
+#articleForm {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 50px 50px 50px 50px 50px;
+  grid-template-areas: "title" "topic" "createNewText" "article" "- " "submit";
+}
+
+.inputBox {
+  border: none;
+  border-bottom: 2px solid #43abc9;
+}
+#createTitle {
+  grid-area: title;
+}
+#selectTopic {
+  float: left;
+  grid-area: topic;
+}
+#topic {
+  float: right;
+  grid-area: topic;
+  width: 85%;
+}
+#newTopicLabel {
+  grid-area: createNewText;
+}
+#createTopicButton {
+  width: 40%;
+  grid-area: createNewText;
+  float: right;
+}
+
+#articleBody {
+  float: left;
+  grid-area: article;
+  margin-bottom: 100px;
+}
+#articleTexArea {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 98%;
+}
+
+#fillInFields {
+  grid-area: submit;
+  color: #9f6000;
+  text-align: center;
+  background-color: #feefb3;
 }

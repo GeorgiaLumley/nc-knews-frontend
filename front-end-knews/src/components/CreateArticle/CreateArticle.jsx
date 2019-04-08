@@ -17,7 +17,7 @@ class CreateArticle extends Component {
   };
   render() {
     return (
-      <form htmlFor='articleCreation'>
+      <form htmlFor='articleCreation' id='articleForm'>
         <label htmlFor='title'>
           Title:
           <input
@@ -25,57 +25,72 @@ class CreateArticle extends Component {
             className='inputBox'
             type='text'
             name='title'
+            id='createTitle'
             onChange={this.inputChanged}
           />
           <br />
         </label>
-        Topic:
-        <select data-cy='topicSelector' name='topic' id='topic' onChange={this.inputChanged}>
-          <option id='defaultTopic' value='' disabled selected>
-            Select a Topic
-          </option>
-          {this.state.availableTopics.map(topic => {
-            return (
-              <option key={topic.slug} value={topic.slug}>
-                {topic.slug}
-              </option>
-            );
-          })}
-        </select>
-        <p id='newTopicText'>Need a different topic, Make your own:</p>
+        <div id='selectTopic'>
+          Topic:
+          <select
+            className='selectBox'
+            data-cy='topicSelector'
+            name='topic'
+            id='topic'
+            onChange={this.inputChanged}
+          >
+            <option id='defaultTopic' value='' disabled selected>
+              Select a Topic
+            </option>
+            {this.state.availableTopics.map(topic => {
+              return (
+                <option key={topic.slug} value={topic.slug}>
+                  {topic.slug}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        <br />
+
         {this.state.createNewTopic ? (
           <CreateNewTopic
             updateTopics={this.updateTopics}
             topicCreated={this.toggleTopicFalse}
           />
         ) : (
-          <button
-          data-cy='createNewTopic'
-            className='button'
-            id='createTopicButton'
-            onClick={this.toggleTopicTrue}
-          >
-            Create New Topic
-          </button>
+          <label id='newTopicLabel'>
+            Need a different topic?
+            <button
+              data-cy='createNewTopic'
+              className='button'
+              id='createTopicButton'
+              onClick={this.toggleTopicTrue}
+            >
+              Create New Topic
+            </button>
+          </label>
         )}
         <br />
-        <label htmlFor='body'>
+        <label htmlFor='body' id='articleBody'>
           Article:
           <textarea
+            id='articleTexArea'
             rows='4'
             cols='40'
             onChange={this.inputChanged}
             name='body'
           />
         </label>
+        <br />
         {this.state.newArticle.title &&
         this.state.newArticle.body &&
         this.state.newArticle.topic ? (
           <button className='button' onClick={this.postNewArticle}>
-            submit
+            Submit Your Article
           </button>
         ) : (
-          <p>Fill in all Fields</p>
+          <p id='fillInFields'>Please fill in all Fields</p>
         )}
         {/* <button onClick={this.buttonDelete}>delete topic</button> */}
       </form>
