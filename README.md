@@ -8,9 +8,13 @@ This was build using
 -react.js
 
 - CSS
+
   This was tested using
+
 - Cypress
+
   This was hosted using
+
 - netfily
 
 ## Installation
