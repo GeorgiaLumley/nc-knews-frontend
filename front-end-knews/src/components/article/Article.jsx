@@ -18,49 +18,53 @@ class Article extends Component {
   };
   render() {
     return (
-      <div className='article'>
-        <Link to={"/"}>
-          <h4>All Articles</h4>
-        </Link>
-        {this.props.user === this.state.article.author ? (
-          <DeleteButton deleteArticle={this.deleteArticle} />
-        ) : (
-          <> </>
-        )}
-        <ArticleTitleGrid
-          title={this.state.article.title}
-          author={this.state.article.author}
-          created={this.state.article.created_at}
-        />
-
-        <p id='body'>{this.state.article.body}</p>
-        <div id='votes'>
-          <p>Votes: {this.state.article.votes + this.state.voteChange}</p>
-          <span role='img'>
-            <button
-              className='button'
-              id='voteUp'
-              disabled={this.state.voteChange === 1}
-              onClick={() => this.updateVote(1)}
-            >
-              Vote Up
-            </button>
-
-            <button
-              className='button'
-              id='voteDown'
-              disabled={this.state.voteChange === -1}
-              onClick={() => this.updateVote(-1)}
-            >
-              Vote Down
-            </button>
-          </span>
+      <div>
+        <div>
+          <Link to={"/"}>
+            <h4>All Articles</h4>
+          </Link>
         </div>
+        <div className='article'>
+          {this.props.user === this.state.article.author ? (
+            <DeleteButton deleteArticle={this.deleteArticle} />
+          ) : (
+            <> </>
+          )}
+          <ArticleTitleGrid
+            title={this.state.article.title}
+            author={this.state.article.author}
+            created={this.state.article.created_at}
+          />
 
-        <ArticleComments
-          article_id={this.props.article_id}
-          user={this.props.user}
-        />
+          <p id='body'>{this.state.article.body}</p>
+          <div id='votes'>
+            <p>Votes: {this.state.article.votes + this.state.voteChange}</p>
+            <span role='img'>
+              <button
+                className='button'
+                id='voteUp'
+                disabled={this.state.voteChange === 1}
+                onClick={() => this.updateVote(1)}
+              >
+                Vote Up
+              </button>
+
+              <button
+                className='button'
+                id='voteDown'
+                disabled={this.state.voteChange === -1}
+                onClick={() => this.updateVote(-1)}
+              >
+                Vote Down
+              </button>
+            </span>
+          </div>
+
+          <ArticleComments
+            article_id={this.props.article_id}
+            user={this.props.user}
+          />
+        </div>
       </div>
     );
   }
