@@ -37,18 +37,22 @@ class Articles extends Component {
     );
   }
   componentDidMount() {
+    console.log("hhuhuhu");
     if (this.props.topic_id) {
       fetchArticlesWithTopic(this.props.topic_id).then(res =>
         this.setState({ articles: res })
       );
-    } else if (this.props.author) {
+    } else {
+      fetchAllArticles().then(res => this.setState({ articles: res }));
+    }
+  }
+  componentDidUpdate() {
+    if (this.props.author) {
       fetchArticlesByAuthor(this.props.author)
         .then(res => this.setState({ articles: res }))
         .catch(err => {
           this.setState({ articleError: err });
         });
-    } else {
-      fetchAllArticles().then(res => this.setState({ articles: res }));
     }
   }
 
