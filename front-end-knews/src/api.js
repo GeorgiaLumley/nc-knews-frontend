@@ -72,6 +72,7 @@ export const postArticle = async newArticle => {
 };
 
 export const addNewComment = async (article_id, comment) => {
+  console.log("api", article_id, comment);
   const { data } = await axios
     .post(
       `https://nc-knews-lumley.herokuapp.com/api/articles/${article_id}/comments`,
@@ -80,6 +81,7 @@ export const addNewComment = async (article_id, comment) => {
     .catch(err => {
       console.log(err);
     });
+  console.log("api last", data);
   if (data.comment) return data.comment[0];
   else {
     throw {
