@@ -11,17 +11,30 @@ import FilterForm from "./sortingArticles/FilterForm";
 import CreateArticleButton from "../CreateArticleButton";
 import TopicLink from "../topicList/topicLink";
 import SearchAuthor from "./SearchAuthor";
+import { navigate } from "@reach/router";
 class Articles extends Component {
   state = {
     articles: [],
     filter: { order: "desc", sort_By: "created_at" },
-    articleError: null
+    articleError: null,
+    topicError: null
   };
   render() {
-    const { articleError, articles } = this.state;
+    const { articleError, articles, topicError } = this.state;
     if (articleError)
       return (
         <p className='errMsg'>Error: {articleError.msg}, Invalid Author</p>
+      );
+    if (topicError)
+      return (
+        <div>
+          <p className='errMsg'>
+            Error: No Topics Found. Try Different Topic Name
+          </p>
+          <button className='button' onClick={this.navigateTopics}>
+            See Available Topics
+          </button>
+        </div>
       );
     return (
       <div>
@@ -39,14 +52,15 @@ class Articles extends Component {
   }
   componentDidMount() {
     if (this.props.topic_id) {
-      fetchArticlesWithTopic(this.props.topic_id).then(res =>
-        this.setState({ articles: res })
-      );
+      fetchArticlesWithTopic(this.props.topic_id)
+        .then(res => this.setState({ articles: res }))
+        .catch(err => this.setState({ topicError: true }));
     } else {
       fetchAllArticles().then(res => this.setState({ articles: res }));
     }
   }
-  componentDidUpdate() { //use prev props
+  componentDidUpdate() {
+    //use prev props
     console.log("hihihi");
     if (this.props.author) {
       fetchArticlesByAuthor(this.props.author)
@@ -87,6 +101,9 @@ class Articles extends Component {
       : fetchFilteredArticle(order, sortBy).then(data => {
           this.setState({ articles: data.articles });
         });
+  };
+  navigateTopics = () => {
+    navigate("/topics");
   };
 }
 export default Articles;

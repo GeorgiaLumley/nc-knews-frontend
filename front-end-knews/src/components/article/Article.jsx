@@ -14,10 +14,20 @@ import DeleteButton from "./DeleteArticle";
 class Article extends Component {
   state = {
     article: {},
-    voteChange: 0
+    voteChange: 0,
+    idError: null
   };
   render() {
-    const { article, voteChange } = this.state;
+    const { article, voteChange, idError } = this.state;
+    if (idError)
+      return (
+        <div>
+          <p className='errMsg'>Invalid article_id</p>
+          <button className='button' onClick={this.navigateArticles}>
+            See available articles
+          </button>
+        </div>
+      );
     return (
       <div>
         <div>
@@ -70,9 +80,13 @@ class Article extends Component {
     );
   }
   componentDidMount() {
-    fetchArticleById(this.props.article_id).then(article => {
-      this.setState({ article });
-    });
+    fetchArticleById(this.props.article_id)
+      .then(article => {
+        this.setState({ article });
+      })
+      .catch(err => {
+        this.setState({ idError: true });
+      });
   }
   updateVote = value => {
     updateArticleVote(value, this.props.article_id);
@@ -84,6 +98,9 @@ class Article extends Component {
     deleteArticleRequest(this.props.article_id).then(res => {
       navigate("/");
     });
+  };
+  navigateArticles = () => {
+    navigate("/");
   };
 }
 

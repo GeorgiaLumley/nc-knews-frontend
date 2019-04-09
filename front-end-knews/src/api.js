@@ -13,7 +13,7 @@ export const fetchArticlesWithTopic = async slug => {
   const { data } = await axios
     .get(`https://nc-knews-lumley.herokuapp.com/api/articles?topic=${slug}`)
     .catch(err => {
-      console.log(err);
+      throw "invalid slug";
     });
   return data.filtered;
 };
@@ -21,7 +21,9 @@ export const fetchArticlesWithTopic = async slug => {
 export const fetchArticleById = async article_id => {
   const { data } = await axios
     .get(`https://nc-knews-lumley.herokuapp.com/api/articles/${article_id}`)
-    .catch(err => console.log(err));
+    .catch(err => {
+      throw "invalid article_id";
+    });
 
   return data.article;
 };

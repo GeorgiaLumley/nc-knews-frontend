@@ -9,6 +9,7 @@ import TopicList from "./components/topicList/TopicList";
 
 import CreateArticle from "./components/CreateArticle/CreateArticle";
 import UserProfile from "./components/profile/UserProfile";
+import PageNotFound from "./components/404";
 
 class App extends Component {
   state = {
@@ -81,6 +82,7 @@ class App extends Component {
             user={this.state.username}
           />
           <UserProfile path='/user/:username' user={this.state.username} />
+          <PageNotFound default />
         </Router>
       </div>
     );
