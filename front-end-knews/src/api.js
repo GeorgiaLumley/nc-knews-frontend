@@ -44,6 +44,15 @@ export const updateArticleVote = async (vote, article_id) => {
 
   return data.updateVotes;
 };
+export const updateCommentVote = async (vote, comment_id) => {
+  const { data } = await axios
+    .patch(`https://nc-knews-lumley.herokuapp.com/api/comments/${comment_id}`, {
+      incVotes: vote
+    })
+    .catch(err => console.log(err));
+
+  return data.updateVotes;
+};
 
 export const fetchTopics = async blank => {
   const { data } = await axios
@@ -53,6 +62,7 @@ export const fetchTopics = async blank => {
 };
 
 export const postArticle = async newArticle => {
+  console.log(newArticle);
   const { data } = await axios
     .post("https://nc-knews-lumley.herokuapp.com/api/articles", newArticle)
     .catch(err => {
@@ -70,8 +80,12 @@ export const addNewComment = async (article_id, comment) => {
     .catch(err => {
       console.log(err);
     });
-
-  return data.comment[0];
+  if (data.comment) return data.comment[0];
+  else {
+    throw {
+      msg: data.msg
+    };
+  }
 };
 
 export const fetchFilteredArticle = async (order, sortBy) => {
@@ -89,7 +103,7 @@ export const fetchFilteredArticle = async (order, sortBy) => {
 export const fetchFilteredArticleWithTopic = async (order, sortBy, topic) => {
   const { data } = await axios
     .get(
-      `https://nc-knews-lumley.herokuapp.com/api/articles?order=${order}&&sortBy=${sortBy}&&topic=${topic}`
+      `https://nc-knews-lumley.herokuapp.com/api/articles?order=${order}&&sort_by=${sortBy}&&topic=${topic}`
     )
     .catch(err => {
       console.log(err);
@@ -101,6 +115,7 @@ export const fetchArticlesByAuthor = async author => {
   const { data } = await axios
     .get(`https://nc-knews-lumley.herokuapp.com/api/articles?author=${author}`)
     .catch(err => err.response);
+  console.log(data);
   if (data.filtered) return data.filtered;
   else {
     throw {

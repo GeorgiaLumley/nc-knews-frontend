@@ -21,22 +21,25 @@ class App extends Component {
       <div className='App'>
         <Title data-cy='title' />
         {!this.state.loggedIn ? (
-          <label>
-            Username
-            <input
-              className='inputBox'
-              onChange={this.usernameChange}
-              type='text'
-            />
-            <button
-              type='submit'
-              className='button'
-              value='logIn'
-              onClick={this.LoggedIn}
-            >
-              Login
-            </button>
-          </label>
+          <div>
+            <p>Sample Username tickle122</p>
+            <label>
+              Username
+              <input
+                className='inputBox'
+                onChange={this.usernameChange}
+                type='text'
+              />
+              <button
+                type='submit'
+                className='button'
+                value='logIn'
+                onClick={this.LoggedIn}
+              >
+                Login
+              </button>
+            </label>
+          </div>
         ) : (
           <span id='loggedIn'>
             <p id='loggedInUser'>{`logged in as ${this.state.username}`}</p>
@@ -50,7 +53,11 @@ class App extends Component {
                 Profile
               </button>
             </Link>
-            <button onClick={this.LoggedOut} className='button' id='logOutButton'>
+            <button
+              onClick={this.LoggedOut}
+              className='button'
+              id='logOutButton'
+            >
               Log Out
             </button>
           </span>

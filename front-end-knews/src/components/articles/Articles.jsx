@@ -18,11 +18,10 @@ class Articles extends Component {
     articleError: null
   };
   render() {
-    if (this.state.articleError)
+    const { articleError, articles } = this.state;
+    if (articleError)
       return (
-        <p className='errMsg'>
-          Error: {this.state.articleError.msg}, Invalid Author
-        </p>
+        <p className='errMsg'>Error: {articleError.msg}, Invalid Author</p>
       );
     return (
       <div>
@@ -34,7 +33,7 @@ class Articles extends Component {
           updateState={this.changeStateByFilterOptions}
           filterArticles={this.filterArticles}
         />
-        <DisplayArticles articles={this.state.articles} />
+        <DisplayArticles articles={articles} />
       </div>
     );
   }
@@ -47,7 +46,8 @@ class Articles extends Component {
       fetchAllArticles().then(res => this.setState({ articles: res }));
     }
   }
-  componentDidUpdate() {
+  componentDidUpdate() { //use prev props
+    console.log("hihihi");
     if (this.props.author) {
       fetchArticlesByAuthor(this.props.author)
         .then(res => this.setState({ articles: res }))

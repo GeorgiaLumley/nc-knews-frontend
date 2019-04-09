@@ -7,7 +7,7 @@ class CreateNewTopic extends Component {
   };
   render() {
     return (
-      <div>
+      <div id='newTopicInfo'>
         Topic name:
         <input
           data-cy='newTopicName'
@@ -16,6 +16,7 @@ class CreateNewTopic extends Component {
           name='slug'
           type='text'
         />
+        <br />
         Topic description:
         <textarea
           className='textArea'

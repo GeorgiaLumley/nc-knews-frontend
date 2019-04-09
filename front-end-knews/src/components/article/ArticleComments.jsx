@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import {
   fetchCommentsByArticleId,
-  updateArticleVote,
+  updateCommentVote,
   deleteCommentRequest
 } from "../../api";
 import CommentBox from "./CommentBox";
@@ -14,58 +14,62 @@ class ArticleComments extends Component {
     voteChange: 0
   };
   render() {
-    const comments = this.state.comments;
+    const { comments, voteChange, addComment } = this.state;
     return (
       <div className='comments'>
         <ul id='commentList'>
           {comments.length === 0 ? (
             <p>There are no comments yet</p>
           ) : (
-            comments.map(comment => {
-              return (
-                <div>
-                  <h3>Comments</h3>
+            <div>
+              <h3>Comments</h3>
+              {comments.map(comment => {
+                return (
                   <div>
-                    <li key={comment.comment_id}>
-                      <div className='comment'>
-                        {comment.author === this.props.user ? (
-                          <DeleteCommentButton
-                            deleteComment={this.deleteComment}
-                            comment_id={comment.comment_id}
-                          />
-                        ) : (
-                          <></>
-                        )}
-                        <p id='commentAuthor'>Author: {comment.author}</p>
-                        <p id='commentBody'>{comment.body}</p>
-                      </div>
-                    </li>
+                    <div>
+                      <li key={comment.comment_id}>
+                        <div className='comment'>
+                          {comment.author === this.props.user ? (
+                            <DeleteCommentButton
+                              deleteComment={this.deleteComment}
+                              comment_id={comment.comment_id}
+                            />
+                          ) : (
+                            <></>
+                          )}
+                          <p id='commentAuthor'>Author: {comment.author}</p>
+                          <p id='commentBody'>{comment.body}</p>
+                        </div>
+                      </li>
+                    </div>
+                    <div id='commentVotes'>
+                      <p>Votes: {comment.votes + voteChange}</p>
+                      <span role='img'>
+                        <button
+                          className='button'
+                          disabled={voteChange === 1}
+                          onClick={() => this.updateVote(1, comment.comment_id)}
+                        >
+                          Up
+                        </button>
+                        <button
+                          className='button'
+                          disabled={voteChange === -1}
+                          onClick={() =>
+                            this.updateVote(-1, comment.comment_id)
+                          }
+                        >
+                          Down
+                        </button>
+                      </span>
+                    </div>
                   </div>
-                  <div id='commentVotes'>
-                    <p>Votes: {comment.votes + this.state.voteChange}</p>
-                    <span role='img'>
-                      <button
-                        className='button'
-                        disabled={this.state.voteChange === 1}
-                        onClick={() => this.updateVote(1)}
-                      >
-                        Up
-                      </button>
-                      <button
-                        className='button'
-                        disabled={this.state.voteChange === -1}
-                        onClick={() => this.updateVote(-1)}
-                      >
-                        Down
-                      </button>
-                    </span>
-                  </div>
-                </div>
-              );
-            })
+                );
+              })}
+            </div>
           )}
         </ul>
-        {this.state.addComment ? (
+        {addComment ? (
           <CommentBox
             user={this.props.user}
             article_id={this.props.article_id}
@@ -74,9 +78,13 @@ class ArticleComments extends Component {
         ) : (
           <> </>
         )}
-        <button className='button' onClick={this.addNewComment}>
-          Add Comment
-        </button>
+        {this.props.user ? (
+          <button className='button' onClick={this.addNewComment}>
+            Add Comment
+          </button>
+        ) : (
+          <> </>
+        )}
       </div>
     );
   }
@@ -93,8 +101,8 @@ class ArticleComments extends Component {
   addNewComment = e => {
     this.setState({ addComment: true });
   };
-  updateVote = value => {
-    updateArticleVote(value, this.props.article_id);
+  updateVote = (value, comment_id) => {
+    updateCommentVote(value, comment_id);
     this.setState(prevState => {
       return { voteChange: prevState.voteChange + value };
     });

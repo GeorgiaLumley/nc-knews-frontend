@@ -17,13 +17,14 @@ class Article extends Component {
     voteChange: 0
   };
   render() {
+    const { article, voteChange } = this.state;
     return (
       <div>
         <div>
           <Link to={"/"}>
             <h4>All Articles</h4>
           </Link>
-          {this.props.user === this.state.article.author ? (
+          {this.props.user === article.author ? (
             <DeleteButton deleteArticle={this.deleteArticle} />
           ) : (
             <> </>
@@ -31,19 +32,19 @@ class Article extends Component {
         </div>
         <div className='article'>
           <ArticleTitleGrid
-            title={this.state.article.title}
-            author={this.state.article.author}
-            created={this.state.article.created_at}
+            title={article.title}
+            author={article.author}
+            created={article.created_at}
           />
 
-          <p id='body'>{this.state.article.body}</p>
+          <p id='body'>{article.body}</p>
           <div id='votes'>
-            <p>Votes: {this.state.article.votes + this.state.voteChange}</p>
+            <p>Votes: {article.votes + voteChange}</p>
             <span>
               <button
                 className='button'
                 id='voteUp'
-                disabled={this.state.voteChange === 1}
+                disabled={voteChange === 1}
                 onClick={() => this.updateVote(1)}
               >
                 Vote Up
@@ -52,7 +53,7 @@ class Article extends Component {
               <button
                 className='button'
                 id='voteDown'
-                disabled={this.state.voteChange === -1}
+                disabled={voteChange === -1}
                 onClick={() => this.updateVote(-1)}
               >
                 Vote Down

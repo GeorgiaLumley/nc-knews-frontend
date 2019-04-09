@@ -211,10 +211,12 @@
 #articleForm {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 50px 50px 50px 50px 50px 50px;
-  grid-template-areas: "title" "topic" "createNewText" "article" "- " "submit";
+  grid-template-rows: 50px 50px 50px 50px 50px 50px 50px;
+  grid-template-areas: "title" "topic" "createNewText" "newTopic" "article" "- " "submit";
 }
-
+#newTopicInfo {
+  grid-area: createNewText;
+}
 .inputBox {
   border: none;
   border-bottom: 2px solid #43abc9;
@@ -243,6 +245,7 @@
 #articleBody {
   float: left;
   grid-area: article;
+  margin-top: 30px;
   margin-bottom: 100px;
 }
 .textArea {
