@@ -28,7 +28,7 @@ const FilterForm = ({ updateState, filterArticles }) => {
         onClick={filterArticles}
         type='submit'
       >
-        filter
+        Apply
       </button>
     </form>
   );
