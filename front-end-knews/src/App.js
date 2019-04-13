@@ -23,7 +23,7 @@ class App extends Component {
         <Title data-cy='title' />
         {!this.state.loggedIn ? (
           <div>
-            <p>Sample Username: tickle122</p>
+            <p>Guest Username: tickle122</p>
             <label>
               Username
               <input

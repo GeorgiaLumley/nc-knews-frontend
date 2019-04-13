@@ -19,7 +19,6 @@ class title extends Component {
         <Link to={"/topics"}>
           <i className='arrowDown' onClick={this.openTopics} />
         </Link>
-        {/* <p>Logged in as {props.username}</p> */}
       </div>
     );
   }
