@@ -98,11 +98,13 @@ export const fetchFilteredArticle = async (order, sortBy) => {
 export const fetchFilteredArticleWithTopic = async (order, sortBy, topic) => {
   const { data } = await axios
     .get(
-      `${baseUrl}/articles?order=${order}&&sort_by=${sortBy}&&topic=${topic}`
+      `${baseUrl}/articles?topic=${topic}&&order=${order}&&sort_by=${sortBy}`
     )
+
     .catch(err => {
       console.log(err);
     });
+
   return data;
 };
 
