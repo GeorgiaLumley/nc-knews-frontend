@@ -18,9 +18,9 @@ const FilterForm = ({ updateState, filterArticles }) => {
         onChange={updateState}
         name='sortBy'
       >
+        <option value='created_at'>Date</option>
         <option value='title'>Title</option>
         <option value='votes'>Votes</option>
-        <option value='created_at'>Date</option>
       </select>
       <button
         className='button'
