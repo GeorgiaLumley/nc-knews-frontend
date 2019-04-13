@@ -9,7 +9,7 @@ import {
 } from "../../api";
 import FilterForm from "./sortingArticles/FilterForm";
 import CreateArticleButton from "../CreateArticleButton";
-import TopicLink from "../topicList/topicLink";
+
 import SearchAuthor from "./SearchAuthor";
 import { navigate } from "@reach/router";
 class Articles extends Component {
@@ -38,9 +38,7 @@ class Articles extends Component {
       );
     return (
       <div>
-        {this.props.user ? <CreateArticleButton /> : <> </>}
-        <TopicLink />
-        <h2>Articles</h2>
+        <h1>Articles</h1>
         <SearchAuthor />
         <FilterForm
           updateState={this.changeStateByFilterOptions}
@@ -61,7 +59,7 @@ class Articles extends Component {
   }
   componentDidUpdate() {
     //use prev props
-    console.log("hihihi");
+
     if (this.props.author) {
       fetchArticlesByAuthor(this.props.author)
         .then(res => this.setState({ articles: res }))
@@ -85,7 +83,7 @@ class Articles extends Component {
       filterOption === "created_at"
     ) {
       this.setState(prevState => {
-        return { filter: { ...prevState.filter, sortBy: filterOption } };
+        return { filter: { ...prevState.filter, sort_By: filterOption } };
       });
     }
   };
@@ -93,14 +91,18 @@ class Articles extends Component {
     event.preventDefault();
     const topic = this.props.topic_id;
     const order = this.state.filter.order;
-    const sortBy = this.state.filter.sortBy;
-    this.props.topic_id
-      ? fetchFilteredArticleWithTopic(order, sortBy, topic).then(data => {
-          this.setState({ article: data.articles });
-        })
-      : fetchFilteredArticle(order, sortBy).then(data => {
-          this.setState({ articles: data.articles });
-        });
+    const sortBy = this.state.filter.sort_By;
+   
+    if (this.props.topic_id) {
+      fetchFilteredArticleWithTopic(order, sortBy, topic).then(data => {
+     
+        this.setState({ article: data.filtered });
+      });
+    } else {
+      fetchFilteredArticle(order, sortBy).then(data => {
+        this.setState({ articles: data.articles });
+      });
+    }
   };
   navigateTopics = () => {
     navigate("/topics");
