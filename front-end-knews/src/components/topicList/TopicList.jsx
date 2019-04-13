@@ -10,9 +10,6 @@ class TopicList extends Component {
   render() {
     return (
       <div>
-        <Link to={"/"}>
-          <h4>All Articles</h4>
-        </Link>
         <Topics topics={this.state.topics} />
       </div>
     );
