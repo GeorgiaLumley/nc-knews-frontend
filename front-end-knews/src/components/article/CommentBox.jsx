@@ -27,7 +27,7 @@ class CommentBox extends Component {
     e.preventDefault();
 
     const article_id = this.props.article_id;
-    console.log("box", article_id);
+   
     addNewComment(article_id, this.state).then(newComment => {
       this.props.updateComments(newComment);
     });
