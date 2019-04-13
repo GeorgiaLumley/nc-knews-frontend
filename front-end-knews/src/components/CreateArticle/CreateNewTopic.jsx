@@ -27,8 +27,10 @@ class CreateNewTopic extends Component {
         <button
           data-cy='addNewTopicButton'
           className='button'
+          id='addTopicButton'
           onClick={this.addNewTopic}
           type='submit'
+          disabled={!this.state.slug}
         >
           Add Topic
         </button>
