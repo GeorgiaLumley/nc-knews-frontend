@@ -117,7 +117,11 @@
 }
 
 #logOutButton {
-  float: right;
+  display: inline-block;
+  /* margin-right: 10px; */
+}
+#createArticleButton {
+  display: inline-block;
 }
 
 .button:hover {
@@ -257,9 +261,6 @@
 .navbar {
   overflow: hidden;
   background-color: #abc943;
-
-  position: fixed;
-  top: 0;
   width: 100%;
 }
 
@@ -280,9 +281,49 @@ i {
   -webkit-transform: rotate(45deg);
 }
 
-.sidebarOpen {
-  background: black;
+#profileButton {
+  float: right;
 }
-.sidebar {
-  background: red;
+
+@media only screen and (max-width: 375px) {
+  ._profile {
+    float: right;
+    top: 100%;
+    left: 100%;
+    margin: -40px 50px 10px 100px;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  ._profile {
+    float: right;
+    top: 100%;
+    left: 100%;
+    margin: -40px 50px 10px 100px;
+  }
+}
+
+/* main icon */
+._profile {
+  height: 2em; /* height == width */
+  width: 2em;
+
+  border-radius: 50%;
+  overflow: hidden;
+}
+/* profile head */
+._head {
+  background: black;
+  border-radius: 100%;
+  width: 45%;
+  height: 45%;
+  margin: 15% auto 5%;
+}
+/* profile body */
+._body {
+  background: black;
+  width: 65%;
+  height: 40%;
+  margin: auto;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
 }
