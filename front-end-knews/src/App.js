@@ -20,7 +20,11 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <Title data-cy='title' />
+        <Title
+          data-cy='title'
+          loggedIn={this.state.loggedIn}
+          username={this.state.username}
+        />
         {!this.state.loggedIn ? (
           <div>
             <p>Guest Username: tickle122</p>
@@ -44,16 +48,7 @@ class App extends Component {
         ) : (
           <span id='loggedIn'>
             <p id='loggedInUser'>{`logged in as ${this.state.username}`}</p>
-            <Link to={`user/${this.state.username}`}>
-              <button
-                id='profileButton'
-                type='button'
-                className='button'
-                onClick={this.viewProfile}
-              >
-                Profile
-              </button>
-            </Link>
+
             <button
               onClick={this.LoggedOut}
               className='button'
@@ -70,12 +65,21 @@ class App extends Component {
         )}
         <Router className='app-main-route'>
           <TopicList path='/topics' />
-          <Articles path='/' user={this.state.username} />
+          <Articles
+            path='/'
+            user={this.state.username}
+            loggedIn={this.state.loggedIn}
+          />
           <Articles
             path='/articles/topic/:topic_id'
             user={this.state.username}
+            loggedIn={this.state.loggedIn}
           />
-          <Articles path='/articles/user/:author' user={this.state.username} />
+          <Articles
+            path='/articles/user/:author'
+            user={this.state.username}
+            loggedIn={this.state.loggedIn}
+          />
           <Article path='/articles/:article_id' user={this.state.username} />
           <CreateArticle
             path='/article/createArticle'
