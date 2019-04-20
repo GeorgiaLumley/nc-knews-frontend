@@ -4,8 +4,10 @@ import React, { Component } from "react";
 
 class title extends Component {
   render() {
+    const { loggedIn, username } = this.props;
+    console.log(loggedIn, username);
     return (
-      <div>
+      <div className='navbar'>
         <Link to={"/"}>
           <button
             onClick={this.homeLink}
@@ -19,6 +21,11 @@ class title extends Component {
         <Link to={"/topics"}>
           <i className='arrowDown' onClick={this.openTopics} />
         </Link>
+        {loggedIn && (
+          <div onClick={this.profilePage} id='profileButton'>
+            <ProfileButton />
+          </div>
+        )}
       </div>
     );
   }
@@ -30,8 +37,20 @@ class title extends Component {
     if (this.props.userLoggedIn === false) {
       this.homeLink();
     }
-    this.props.showLogin();
+  };
+  profilePage = () => {
+    const username = this.props.username;
+    navigate(`user/${username}`);
   };
 }
 
 export default title;
+
+export const ProfileButton = () => {
+  return (
+    <div className='_profile'>
+      <div className='_head' />
+      <div className='_body' />
+    </div>
+  );
+};
