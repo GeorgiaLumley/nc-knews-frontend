@@ -80,11 +80,7 @@ class Articles extends Component {
         return { filter: { ...prevState.filter, order: filterOption } };
       });
     }
-    if (
-      filterOption === "title" ||
-      filterOption === "votes" ||
-      filterOption === "created_at"
-    ) {
+    if (filterOption === "title" || filterOption === "created_at") {
       this.setState(prevState => {
         return { filter: { ...prevState.filter, sort_By: filterOption } };
       });
@@ -98,7 +94,7 @@ class Articles extends Component {
 
     if (this.props.topic_id) {
       fetchFilteredArticleWithTopic(order, sortBy, topic).then(data => {
-        this.setState({ article: data.filtered });
+        this.setState({ articles: data });
       });
     } else {
       fetchFilteredArticle(order, sortBy).then(data => {
