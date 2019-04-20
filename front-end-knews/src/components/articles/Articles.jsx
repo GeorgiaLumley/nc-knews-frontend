@@ -21,6 +21,7 @@ class Articles extends Component {
   };
   render() {
     const { articleError, articles, topicError } = this.state;
+    const { loggedIn } = this.props;
     if (articleError)
       return (
         <p className='errMsg'>Error: {articleError.msg}, Invalid Author</p>
@@ -38,8 +39,10 @@ class Articles extends Component {
       );
     return (
       <div>
+        {loggedIn && <CreateArticleButton />}
         <h1>Articles</h1>
         <SearchAuthor />
+
         <FilterForm
           updateState={this.changeStateByFilterOptions}
           filterArticles={this.filterArticles}
@@ -92,10 +95,9 @@ class Articles extends Component {
     const topic = this.props.topic_id;
     const order = this.state.filter.order;
     const sortBy = this.state.filter.sort_By;
-   
+
     if (this.props.topic_id) {
       fetchFilteredArticleWithTopic(order, sortBy, topic).then(data => {
-     
         this.setState({ article: data.filtered });
       });
     } else {
