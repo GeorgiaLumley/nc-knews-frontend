@@ -9,11 +9,11 @@ export const fetchAllArticles = async blank => {
 
 export const fetchArticlesWithTopic = async slug => {
   const { data } = await axios
-    .get(`${baseUrl}/articles?topic=${slug}`)
+    .get(`${baseUrl}/articles/topic?topic=${slug}`)
     .catch(err => {
       throw "invalid slug";
     });
-  return data.filtered;
+  return data.articles;
 };
 
 export const fetchArticleById = async article_id => {
@@ -98,14 +98,14 @@ export const fetchFilteredArticle = async (order, sortBy) => {
 export const fetchFilteredArticleWithTopic = async (order, sortBy, topic) => {
   const { data } = await axios
     .get(
-      `${baseUrl}/articles?topic=${topic}&&order=${order}&&sort_by=${sortBy}`
+      `${baseUrl}/articles/topic?topic=${topic}&&order=${order}&&sort_by=${sortBy}`
     )
 
     .catch(err => {
       console.log(err);
     });
-
-  return data;
+  console.log(data.articles);
+  return data.articles;
 };
 
 export const fetchArticlesByAuthor = async author => {
