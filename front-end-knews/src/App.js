@@ -10,12 +10,14 @@ import TopicList from "./components/topicList/TopicList";
 import CreateArticle from "./components/CreateArticle/CreateArticle";
 import UserProfile from "./components/profile/UserProfile";
 import PageNotFound from "./components/404";
+import CreateArticleButton from "./components/CreateArticleButton";
 
 class App extends Component {
   state = {
     username: "",
     loggedIn: false,
-    validUsername: null
+    validUsername: null,
+    openTopics: false
   };
   render() {
     return (
@@ -24,10 +26,12 @@ class App extends Component {
           data-cy='title'
           loggedIn={this.state.loggedIn}
           username={this.state.username}
+          openTopics={this.openTopics}
+          topicState={this.state.openTopics}
         />
+        <p id='guest'>Guest Username: tickle122</p>
         {!this.state.loggedIn ? (
-          <div>
-            <p>Guest Username: tickle122</p>
+          <div id='loginInput'>
             <label>
               Username
               <input
@@ -56,6 +60,7 @@ class App extends Component {
             >
               Log Out
             </button>
+            {this.state.loggedIn && <CreateArticleButton />}
           </span>
         )}
         {this.state.validUsername && !this.state.loggedIn ? (
@@ -111,6 +116,14 @@ class App extends Component {
   };
   LoggedOut = () => {
     this.setState({ loggedIn: false });
+  };
+  openTopics = () => {
+    console.log("app");
+    if (this.state.openTopics === true) {
+      this.setState(prevState => {
+        return { openTopics: true };
+      });
+    }
   };
 }
 
