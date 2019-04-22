@@ -38,9 +38,9 @@ class Articles extends Component {
         </div>
       );
     return (
-      <div>
-        {loggedIn && <CreateArticleButton />}
-        <h1>Articles</h1>
+      <div id='articles'>
+        {/* {loggedIn && <CreateArticleButton />} */}
+        <h1 id='articlesTitle'>Articles</h1>
         <SearchAuthor />
 
         <FilterForm
