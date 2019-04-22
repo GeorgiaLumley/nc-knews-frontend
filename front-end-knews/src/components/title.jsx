@@ -4,14 +4,14 @@ import React, { Component } from "react";
 
 class title extends Component {
   render() {
-    const { loggedIn, username } = this.props;
+    const { loggedIn, username, topicState } = this.props;
     console.log(loggedIn, username);
     return (
       <div className='navbar'>
         <Link to={"/"}>
           <button
             onClick={this.homeLink}
-            onClick={this.openTopics}
+            // onClick={this.openTopics}
             id='homeButton'
           >
             <h1 id='mainTitle'> NorthCoders News</h1>
@@ -30,13 +30,11 @@ class title extends Component {
     );
   }
   homeLink = () => {
-    console.log("hi");
     navigate("/");
   };
   openTopics = () => {
-    if (this.props.userLoggedIn === false) {
-      this.homeLink();
-    }
+
+    navigate("/topics");
   };
   profilePage = () => {
     const username = this.props.username;
