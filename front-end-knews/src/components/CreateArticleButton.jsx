@@ -5,7 +5,7 @@ const CreateArticleButton = () => {
     <div id="createArticleButton">
       <Link to='/article/createArticle'>
         <label htmlFor='createArticle'>
-          <button className='button' type='submit' name='createArticle'>
+          <button className='button' type='submit' name='createArticle' id="createArticleButton">
             Create Article
           </button>
         </label>
