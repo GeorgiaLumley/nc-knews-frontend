@@ -1,14 +1,19 @@
 .App {
-  padding: 8px;
   display: grid;
+  width: 100%;
 }
 #mainTitle {
   text-align: center;
 }
+
 #mainTitle::first-letter {
   color: rgb(188, 24, 53);
 }
 
+#articles {
+  padding: 8px;
+  padding-top: 0px;
+}
 .article {
   width: 100vw;
   height: 100vh;
@@ -33,6 +38,9 @@
 #articlesTitle {
   grid-area: articleTitle;
   text-align: center;
+  text-align: left;
+  margin-top: 0px;
+  margin-left: 0px;
 }
 
 #articleAuthor {
@@ -44,6 +52,7 @@
 #body {
   overflow-y: scroll;
   grid-area: body;
+  padding-top: 70px;
 }
 #votes {
   margin-top: 35px;
@@ -112,13 +121,13 @@
   position: relative;
 }
 
-#profileButton {
-  float: right;
-}
-
 #logOutButton {
   display: inline-block;
   /* margin-right: 10px; */
+  float: right;
+}
+#createArticleButton {
+  float: left;
 }
 #createArticleButton {
   display: inline-block;
@@ -262,8 +271,19 @@
   overflow: hidden;
   background-color: #abc943;
   width: 100%;
+  position: fixed;
 }
-
+#guest {
+  margin-top: 60px;
+  margin-bottom: 3px;
+  padding: 8px;
+}
+#articlesTitle {
+  margin: 10px;
+}
+#loginInput {
+  padding: 8px;
+}
 #homeButton {
   background-color: #abc943;
   border: #abc943;
@@ -293,7 +313,7 @@ i {
     margin: -40px 50px 10px 100px;
   }
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 375px max-width: 1000px) {
   ._profile {
     float: right;
     top: 100%;
