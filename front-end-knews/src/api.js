@@ -104,7 +104,7 @@ export const fetchFilteredArticleWithTopic = async (order, sortBy, topic) => {
     .catch(err => {
       console.log(err);
     });
-  console.log(data.articles);
+
   return data.articles;
 };
 
