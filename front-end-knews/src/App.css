@@ -122,17 +122,20 @@
 }
 
 #logOutButton {
-  display: inline-block;
-  /* margin-right: 10px; */
+  /* display: inline-block; */
   float: right;
+  margin-top: 10px;
 }
 #createArticleButton {
   float: left;
+  margin-top: 5px;
 }
 #createArticleButton {
   display: inline-block;
 }
-
+#loggedInUser {
+  padding: 8px;
+}
 .button:hover {
   background-color: #abc943;
   color: black;
@@ -264,6 +267,7 @@
 }
 
 #topicListUl {
+  padding-top: 50px;
   list-style-type: none;
 }
 
@@ -272,6 +276,7 @@
   background-color: #abc943;
   width: 100%;
   position: fixed;
+  z-index: 1;
 }
 #guest {
   margin-top: 60px;
