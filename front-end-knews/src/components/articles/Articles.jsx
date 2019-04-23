@@ -8,7 +8,7 @@ import {
   fetchArticlesByAuthor
 } from "../../api";
 import FilterForm from "./sortingArticles/FilterForm";
-import CreateArticleButton from "../CreateArticleButton";
+
 
 import SearchAuthor from "./SearchAuthor";
 import { navigate } from "@reach/router";
@@ -21,7 +21,7 @@ class Articles extends Component {
   };
   render() {
     const { articleError, articles, topicError } = this.state;
-    const { loggedIn } = this.props;
+   
     if (articleError)
       return (
         <p className='errMsg'>Error: {articleError.msg}, Invalid Author</p>
