@@ -4,16 +4,12 @@ import React, { Component } from "react";
 
 class title extends Component {
   render() {
-    const { loggedIn, username, topicState } = this.props;
-    console.log(loggedIn, username);
+    const { loggedIn } = this.props;
+
     return (
       <div className='navbar'>
         <Link to={"/"}>
-          <button
-            onClick={this.homeLink}
-            // onClick={this.openTopics}
-            id='homeButton'
-          >
+          <button onClick={this.homeLink} id='homeButton'>
             <h1 id='mainTitle'> NorthCoders News</h1>
           </button>
         </Link>
@@ -30,10 +26,10 @@ class title extends Component {
     );
   }
   homeLink = () => {
+    console.log("navigate");
     navigate("/");
   };
   openTopics = () => {
-
     navigate("/topics");
   };
   profilePage = () => {
