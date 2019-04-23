@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "@reach/router";
 import Topics from "./Topics";
 import { fetchTopics } from "../../api";
 
@@ -8,6 +7,7 @@ class TopicList extends Component {
     topics: []
   };
   render() {
+    
     return (
       <div>
         <Topics topics={this.state.topics} />
@@ -16,6 +16,7 @@ class TopicList extends Component {
   }
   componentDidMount() {
     fetchTopics().then(topics => this.setState({ topics }));
+    this.props.openTopics();
   }
 }
 
