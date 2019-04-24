@@ -9,11 +9,21 @@ class SearchAuthor extends Component {
   render() {
     return (
       <div id='searchAuthorContainer'>
-        <label>
+        <label id='searchAuthorLabel'>
           Search Author
-          <input  type='text'  className='inputBox' onChange={this.setAuthor} />
+          <input
+            type='text'
+            className='inputBox'
+            onChange={this.setAuthor}
+            id='searchAuthorInput'
+          />
         </label>
-        <button className='button' type='submit' onClick={this.searchAuthor}>
+        <button
+          className='button'
+          type='submit'
+          onClick={this.searchAuthor}
+          id='searchAuthorButton'
+        >
           Search
         </button>
       </div>
