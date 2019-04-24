@@ -326,7 +326,16 @@ i {
     margin: -40px 50px 10px 100px;
   }
 }
-
+@media only screen and (max-width: 375px) {
+  #searchAuthorButton {
+    padding-left: 25px;
+    padding-right: 25px;
+    text-align: center;
+  }
+  #searchAuthorInput {
+    margin-right: 0.1em;
+  }
+}
 /* main icon */
 ._profile {
   height: 2em; /* height == width */
