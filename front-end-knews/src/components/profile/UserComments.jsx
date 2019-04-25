@@ -10,7 +10,7 @@ const UserComments = ({ comments, user }) => {
         <ul id='userComments'>
           {comments.map(comment => {
             return (
-              <div>
+              <div key='userCommentsDiv'>
                 <li key={comment.comment_id} id='userCommentItem'>
                   <div>
                     <Link to={`/articles/${comment.article_id}`}>
