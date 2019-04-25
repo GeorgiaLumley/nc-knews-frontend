@@ -26,7 +26,7 @@ class title extends Component {
     );
   }
   homeLink = () => {
-    console.log("navigate");
+
     this.props.openTopics();
     navigate("/");
   };
