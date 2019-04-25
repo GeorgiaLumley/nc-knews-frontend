@@ -91,14 +91,18 @@ class App extends Component {
             path='/article/createArticle'
             user={this.state.username}
           />
-          <UserProfile path='/user/:username' user={this.state.username} />
+          <UserProfile
+            path='/user/:username'
+            user={this.state.username}
+            loggedIn={this.state.loggedIn}
+          />
           <PageNotFound default />
         </Router>
       </div>
     );
   }
   componentDidMount() {
-    console.log("state");
+    
     this.setState({ openTopics: false });
   }
 
@@ -124,9 +128,9 @@ class App extends Component {
     this.setState({ loggedIn: false });
   };
   openTopicsState = () => {
-    console.log("hi");
+  
     this.setState(prevState => {
-      console.log(prevState.openTopics);
+ 
 
       return { openTopics: !prevState.openTopics };
     });
