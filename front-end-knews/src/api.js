@@ -60,7 +60,7 @@ export const fetchTopics = async blank => {
 };
 
 export const postArticle = async newArticle => {
-  console.log(newArticle);
+ 
   const { data } = await axios
     .post(`${baseUrl}/articles`, newArticle)
     .catch(err => {
@@ -70,13 +70,13 @@ export const postArticle = async newArticle => {
 };
 
 export const addNewComment = async (article_id, comment) => {
-  console.log("api", article_id, comment);
+
   const { data } = await axios
     .post(`${baseUrl}/articles/${article_id}/comments`, comment)
     .catch(err => {
       console.log(err);
     });
-  console.log("api last", data);
+
   if (data.comment) return data.comment[0];
   else {
     throw {
@@ -86,7 +86,7 @@ export const addNewComment = async (article_id, comment) => {
 };
 
 export const fetchFilteredArticle = async (order, sortBy) => {
-  console.log(order, sortBy);
+
   const { data } = await axios
     .get(`${baseUrl}/articles?order=${order}&&sort_by=${sortBy}`)
     .catch(err => {
@@ -112,7 +112,7 @@ export const fetchArticlesByAuthor = async author => {
   const { data } = await axios
     .get(`${baseUrl}/articles?author=${author}`)
     .catch(err => err.response);
-  console.log(data);
+
   if (data.filtered) return data.filtered;
   else {
     throw {
