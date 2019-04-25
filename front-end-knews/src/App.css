@@ -133,12 +133,12 @@
 #createArticleButton {
   display: inline-block;
 }
-#loggedInUser {
-  padding: 8px;
-}
 .button:hover {
   background-color: #abc943;
   color: black;
+}
+#loggedInUser {
+  padding: 8px;
 }
 .articleList {
   padding: 1%;
