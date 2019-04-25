@@ -6,7 +6,8 @@ import UserComments from "./UserComments";
 class UserProfile extends Component {
   state = {
     articles: [],
-    comments: []
+    comments: [],
+    count: 0
   };
   render() {
     return (
@@ -20,13 +21,29 @@ class UserProfile extends Component {
       </div>
     );
   }
+
   componentDidMount() {
     fetchArticlesByAuthor(this.props.user).then(res =>
       this.setState({ articles: res })
     );
+
     fetchCommentsByAuthor(this.props.user).then(res => {
       this.setState({ comments: res });
     });
+  }
+  componentDidUpdate() {
+    if (this.props.loggedIn === true && this.state.count === 1) {
+      
+
+      this.setState({ count: 1 });
+      fetchArticlesByAuthor(this.props.user).then(res =>
+        this.setState({ articles: res })
+      );
+
+      fetchCommentsByAuthor(this.props.user).then(res => {
+        this.setState({ comments: res });
+      });
+    }
   }
 }
 
