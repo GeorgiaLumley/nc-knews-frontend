@@ -16,16 +16,16 @@ class ArticleComments extends Component {
   render() {
     const { comments, voteChange, addComment } = this.state;
     return (
-      <div className='comments'>
+      <div className='comments' key='comments' >
         <ul id='commentList'>
           {comments.length === 0 ? (
             <p>There are no comments yet</p>
           ) : (
-            <div>
+            <div key='commentsDiv'>
               <h3>Comments</h3>
-              {comments.map(comment => {
+              {comments.map((comment, i) => {
                 return (
-                  <div>
+                  <div key={i}>
                     <div>
                       <li key={comment.comment_id}>
                         <div className='comment'>
