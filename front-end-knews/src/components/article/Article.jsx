@@ -32,7 +32,7 @@ class Article extends Component {
       <div>
         <div>
           <Link to={"/"}>
-            <h4>All Articles</h4>
+            <h4 id='allArticlesLink'>All Articles</h4>
           </Link>
           {this.props.user === article.author ? (
             <DeleteButton deleteArticle={this.deleteArticle} />
