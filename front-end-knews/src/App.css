@@ -34,6 +34,10 @@
 
 #title {
   grid-area: title;
+  padding-left: 8px;
+}
+#allArticlesLink {
+  padding-left: 8px;
 }
 #articlesTitle {
   grid-area: articleTitle;
@@ -52,7 +56,8 @@
 #body {
   overflow-y: scroll;
   grid-area: body;
-  padding-top: 70px;
+  /* padding-top: 50px; */
+  padding-left: 8px;
 }
 #votes {
   margin-top: 35px;
@@ -72,8 +77,9 @@
 .comments {
   overflow-y: scroll;
   grid-area: comments;
-
+  border-radius: 25px;
   margin: 1%;
+  background: hsl(0, 0%, 97%);
 }
 
 #commentList {
