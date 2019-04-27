@@ -8,9 +8,9 @@ const UserComments = ({ comments, user }) => {
         <p>There are no comments yet</p>
       ) : (
         <ul id='userComments'>
-          {comments.map(comment => {
+          {comments.map((comment, i) => {
             return (
-              <div key='userCommentsDiv'>
+              <div key={i}>
                 <li key={comment.comment_id} id='userCommentItem'>
                   <div id='UserCommentsDiv'>
                     <Link to={`/articles/${comment.article_id}`}>
