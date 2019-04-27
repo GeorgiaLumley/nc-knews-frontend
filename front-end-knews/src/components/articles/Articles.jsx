@@ -9,7 +9,6 @@ import {
 } from "../../api";
 import FilterForm from "./sortingArticles/FilterForm";
 
-
 import SearchAuthor from "./SearchAuthor";
 import { navigate } from "@reach/router";
 class Articles extends Component {
@@ -20,8 +19,9 @@ class Articles extends Component {
     topicError: null
   };
   render() {
+  
     const { articleError, articles, topicError } = this.state;
-   
+
     if (articleError)
       return (
         <p className='errMsg'>Error: {articleError.msg}, Invalid Author</p>
@@ -40,7 +40,9 @@ class Articles extends Component {
     return (
       <div id='articles'>
         {/* {loggedIn && <CreateArticleButton />} */}
-        <h1 id='articlesTitle'>Articles</h1>
+        <h1 id='articlesTitle' onClick={() => this.allArticles()}>
+          Articles
+        </h1>
         <SearchAuthor />
 
         <FilterForm
@@ -57,8 +59,16 @@ class Articles extends Component {
         .then(res => this.setState({ articles: res }))
         .catch(err => this.setState({ topicError: true }));
     } else {
-      fetchAllArticles().then(res => this.setState({ articles: res }));
+      fetchAllArticles().then(res => {
+        this.setState({ articles: res });
+      });
     }
+  }
+  allArticles() {
+    navigate("/");
+    fetchAllArticles().then(res => {
+      this.setState({ articles: res });
+    });
   }
   componentDidUpdate() {
     //use prev props
