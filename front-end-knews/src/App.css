@@ -159,10 +159,15 @@
   border: none;
   border-bottom: 2px solid #43abc9;
 }
+#yourCommentsH4 {
+  padding-left: 8px;
+}
 #userComments {
   list-style-type: none;
   padding: 2px;
+  padding-left: 8px;
 }
+
 #userCommentItem {
   border: none;
   border-bottom: 2px solid #43abc9;
