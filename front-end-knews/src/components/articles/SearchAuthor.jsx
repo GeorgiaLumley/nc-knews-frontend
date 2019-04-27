@@ -35,6 +35,7 @@ class SearchAuthor extends Component {
     this.setState({ author });
   };
   searchAuthor = () => {
+    document.getElementById("searchAuthorInput").value = "";
     navigate(`/articles/user/${this.state.author}`);
   };
 }
